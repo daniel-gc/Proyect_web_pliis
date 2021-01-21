@@ -1,0 +1,12 @@
+.cabecera {
+    text-align: center !important;
+}
+.spanNombrePlan {
+    border-radius: 5px;
+    width: 70%;
+    display: inline-block;
+    text-align: center;
+}
+.center{
+    text-align: center;
+}

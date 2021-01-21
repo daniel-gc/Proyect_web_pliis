@@ -1,0 +1,442 @@
+<block-ui>
+    <div class="ui-fluid">
+        <p-toast></p-toast>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card">
+                    <div class="fullscreen" *ngIf="displayVistaPrevia" >
+                        <div class="contenidoImagen">
+                            <button type="button" pripple="" class="btonCerrar" (click)="onCloseDialogoImg()">
+                                <span class="p-galleria-close-icon pi pi-times"></span>
+                            </button>
+                            <div class="contenedorImagen imagenFull">
+                                <img class="ng-star-inserted" style="width: 100%; display: block;"
+                                     [src]="imageObject[selectedImageIndex].image == null ? './assets/layout/images/image-not-found.svg': imageObject[selectedImageIndex].image">
+                            </div>
+                        </div>
+                    </div>
+                    <h1 *ngIf="mostrarLista">Solicitudes de Crédito</h1>
+                    <br *ngIf="mostrarLista">
+                    <p-table [value]="solicitudesCredito" [paginator]="true" [rows]="10" dataKey="idCredito"
+                             selectionMode="single" [(selection)]="selectedSolicitudesCredito" styleClass="ui-table-cars"
+                             [columns]="cols" [responsive]="true" *ngIf="mostrarLista" sortField="idCredito" sortOrder="sortOrder">
+                        <ng-template pTemplate="caption">
+                            Listado de solicitudes de crédito
+                        </ng-template>
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <td class="cabecera" width="9%"  pSortableColumn="idCredito">
+                                    <p class="pTextCabecera">Folio</p><p-sortIcon field="idCredito"></p-sortIcon>
+                                </td>
+                                <th class="cabecera" width="15%" pSortableColumn="fechaSolicitud">
+                                    <p class="pTextCabecera">Fecha<br>solicitud</p><p-sortIcon field="fechaSolicitud"></p-sortIcon>
+                                </th>
+                                <th class="cabecera" width="24%" pSortableColumn="nombre" *ngIf="esAnalista">
+                                    <p class="pTextCabecera">Nombre<br>solicitante</p><p-sortIcon field="nombre"></p-sortIcon>
+                                </th>
+                                <th class="cabecera" width="10%" pSortableColumn="empresa" *ngIf="esAnalista">
+                                    <p class="pTextCabecera">Empresa</p><p-sortIcon field="empresa"></p-sortIcon>
+                                </th>
+                                <th class="cabecera" width="14%" pSortableColumn="numeroEmpleado" *ngIf="esAnalista">
+                                    <p class="pTextCabecera">Numero</p><br>empleado<p-sortIcon field="numeroEmpleado"></p-sortIcon>
+                                </th>
+                                <th class="cabecera" width="14%" pSortableColumn="montoCreditoDTO.monto">
+                                    <p class="pTextCabecera">Monto<br>solicitado</p><p-sortIcon field="montoCreditoDTO.monto"></p-sortIcon>
+                                </th>
+                                <th class="cabecera" width="14%" pSortableColumn="estatusCreditoDTO.descripcion" *ngIf="tipoUsuario !== 'AA'">
+                                    <p class="pTextCabecera">Estatus</p><p-sortIcon field="estatusCreditoDTO.descripcion"></p-sortIcon>
+                                </th>
+                                <th class="cabecera" width="15%" pSortableColumn="fechaSolicitud" *ngIf="tipoUsuario === 'AA'">
+                                    <p class="pTextCabecera">Fecha<br>arpobación</p><p-sortIcon field="fechaConclucion"></p-sortIcon>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                            <tr (click)="onMuestraFormDetalle('modifica', rowData)">
+                                <td class="center" width="9%">{{rowData.idCredito}}</td>
+                                <td class="center" width="15%">{{rowData.fechaSolicitud}}</td>
+                                <td class="center" width="24%" *ngIf="esAnalista">{{rowData.nombre}} {{rowData.apellidoPaterno}} {{rowData.apellidoMaterno}}</td>
+                                <td class="center" width="10%" *ngIf="esAnalista">{{rowData.empresa}}</td>
+                                <td class="center" width="14%" *ngIf="esAnalista">{{rowData.numeroEmpleado}}</td>
+                                <td class="center" width="14%">${{rowData.montoCreditoDTO.monto | number}}</td>
+                                <td class="center" width="14%" *ngIf="tipoUsuario !== 'AA'">{{rowData.estatusCreditoDTO.descripcion}}</td>
+                                <td class="center" width="14%" *ngIf="tipoUsuario === 'AA'">{{rowData.fechaConclucion}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="mostrarLista">
+                            <button pButton type="button" label="Nueva solicitud" style="width:140px; display: block; margin-left: auto; margin-right: auto;"
+                                    icon="ui-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)"
+                                    [pTooltip]="tooltipBtnNueva"
+                                    [disabled]="existeSolicitudCreditoPendiente" *ngIf="!esAnalista"></button>
+                        </div>
+                    </div>
+                    <h1 *ngIf="muestraDetalle">Solicitud de Crédito</h1>
+                    <form name="formaRegistro" novalidate #formaRegistro="ngForm" *ngIf="muestraDetalle">
+                        <div class="ui-g form-group" *ngIf="!esAnalista && nuevaSolicitudCreditoDTO.listaObservacionCreditoDTO.length > 0">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <fieldset>
+                                    <legend>
+                                        <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
+                                            Estatus Solicitud: {{nuevaSolicitudCreditoDTO.estatusCreditoDTO.descripcion}}
+                                        </h3>
+                                    </legend>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                        <span>
+                                            {{nuevaSolicitudCreditoDTO.listaObservacionCreditoDTO[0].observacion}}
+                                        </span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="ui-g form-group">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12" disabled="true">
+                                <fieldset>
+                                    <legend>
+                                        <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
+                                            Datos generales del solicitante
+                                        </h3>
+                                    </legend>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputNombre" type="text" pInputText name="nombreInput" #nombreInput="ngModel" required="true"
+                                                       [(ngModel)]="nuevaSolicitudCreditoDTO.nombre"
+                                                       [disabled]="bloquearGuardado"/>
+                                                <label>Nombre(s)*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput" #apPaternoInput="ngModel" required="true"
+                                                       [(ngModel)]="nuevaSolicitudCreditoDTO.apellidoPaterno"
+                                                       [disabled]="bloquearGuardado"/>
+                                                <label>Apellido Paterno*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
+                                                       [(ngModel)]="nuevaSolicitudCreditoDTO.apellidoMaterno"
+                                                       [disabled]="bloquearGuardado"/>
+                                                <label>Apellido materno</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
+                                                            [monthNavigator]="true" [yearNavigator]="true"
+                                                            [yearRange]="yearRange" name="fechaNac" [disabled]="bloquearGuardado"
+                                                            [(ngModel)]="fechaNacimiento" #fechaNac="ngModel" required="true"
+                                                            [maxDate]="hoy"></p-calendar>
+                                                <label>Fecha de nacimiento*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+    <!--                                            <p-inputMask mask="(99)99999999" [(ngModel)]="nuevaSolicitudCreditoDTO.telefono"-->
+    <!--                                                         pInputText="{{nuevaSolicitudCreditoDTO.telefono}}" #telefMask="ngModel"-->
+    <!--                                                         required="true" size="30" name="telefMask" ></p-inputMask>-->
+                                                <input id="inputTelefono" type="tel" pInputText name="inputTelefono"
+                                                       [(ngModel)]="nuevaSolicitudCreditoDTO.telefono" required="true"
+                                                       #inputTelefono="ngModel" [disabled]="bloquearGuardado"
+                                                       (change)="esTelefonoValido('telefonoAfil', 0)"
+                                                        maxlength="10"/>
+    <!--                                                   pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"/>-->
+    <!--                                                   title="A valid telephone number consist of a 3 digits code area between brackets, a space, the three first digits of the number, a space or hypen (-), and four more digits" required-->
+                                                <label>Teléfono*</label>
+                                                <span *ngIf="!nuevaSolicitudCreditoDTO.telefonoAfilNoValido" style="color: #b00000;">El telefono no es válido.</span>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputEmail" type="email" pInputText name="inputEmail"
+                                                       [(ngModel)]="nuevaSolicitudCreditoDTO.email" (change)="esEmailValido('correoAfil', 0)"
+                                                       required="true" #inputEmail="ngModel" [disabled]="bloquearGuardado"
+                                                       pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"/>
+                                                <label>Email*</label>
+                                                <span *ngIf="!nuevaSolicitudCreditoDTO.correoAfilNoValido" style="color: #b00000;">El email no es válido.</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input  type="text" pInputText name="inputEmpresa"
+                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.empresa"
+                                                        [disabled]="bloquearGuardado"/>
+                                                <label>Empresa</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input  type="text" pInputText name="inputNumeroEmpleado"
+                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.numeroEmpleado"
+                                                        [disabled]="bloquearGuardado"/>
+                                                <label>Número de empleado</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
+                                                            [monthNavigator]="true" [yearNavigator]="true"
+                                                            [yearRange]="yearRange" name="fechaIngreso" [disabled]="bloquearGuardado"
+                                                            [(ngModel)]="fechaAntiguedad" #fechaIngreso="ngModel" required="true"
+                                                            (onSelect)="validarMonto()" [maxDate]="hoy"></p-calendar>
+                                                <label>Fecha de ingreso a empresa*</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
+                                                   *ngIf="nuevaSolicitudCreditoDTO.salarioMensualBruto">$</p>
+                                                <p-spinner size="15" [step]="0.10" name="inputSalarioBruto" required="true"
+                                                           [(ngModel)]="nuevaSolicitudCreditoDTO.salarioMensualBruto"
+                                                           [disabled]="bloquearGuardado" [min]="0" [formatInput]="true"
+                                                           [thousandSeparator]="','" prefix="'$'"
+                                                           style="display: inline-block; width: 93%;"></p-spinner>
+                                                <label>Salario mensual bruto</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
+                                                   *ngIf="nuevaSolicitudCreditoDTO.salarioMensualNeto"  disabled="bloquearGuardado">$</p>
+                                                <p-spinner size="15" [step]="0.10" name="inputSalarioNeto" required="true"
+                                                           #inputSalarioNeto="ngModel" (onChange)="validarMonto()"
+                                                           [(ngModel)]="nuevaSolicitudCreditoDTO.salarioMensualNeto"
+                                                           [disabled]="bloquearGuardado" [min]="0" [formatInput]="true"
+                                                           [thousandSeparator]="','" prefix="'$'"
+                                                           style="display: inline-block; width: 93%;"></p-spinner>
+                                                <label>Salario mensual neto*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                            <span class="md-inputfield">
+                                                <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
+                                                   *ngIf="montoCreditoSeleccionado"  disabled="bloquearGuardado">$</p>
+                                                <p-dropdown [options]="catalogoMontoCreditoFiltrado" [(ngModel)]="montoCreditoSeleccionado" optionLabel="montoStr"
+                                                            [showClear]="true" placeholder=" " name="montoCreditoDropDown" required="true"
+                                                            placeholder="-" [disabled]="disableMonto" *ngIf="!bloquearGuardado"
+                                                            style="display: inline-block; width: 93%;"></p-dropdown>
+                                                <input  type="text" pInputText name="inputMonto" [(ngModel)]="montoCreditoSeleccionado.montoStr"
+                                                        *ngIf="bloquearGuardado" disabled="bloquearGuardado"
+                                                        style="display: inline-block; width: 93%;"/>
+                                                <label>Monto de crédito</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <fieldset>
+                                    <legend>
+                                        <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
+                                            Red de apoyo - 2 Contactos
+                                        </h3>
+                                    </legend>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-12 contacto-contenedor" *ngFor="let contactoCredito of nuevaSolicitudCreditoDTO.listaContactoCreditoDTO; let idContacto = index" [attr.data-index]="idContacto">
+                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputContactoParentesco{{idContacto}}" type="text" pInputText name="inputContactoParentesco{{idContacto}}"
+                                                       #inputContactoParentesco{{idContacto}}="ngModel" required="true"
+                                                       [(ngModel)]="contactoCredito.parentesco" [disabled]="bloquearGuardado"/>
+                                                <label>Parentesco*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputContactoNombre{{idContacto}}" type="text" pInputText name="inputContactoNombre{{idContacto}}"
+                                                       #inputContactoNombre{{idContacto}}="ngModel" required="true"
+                                                       [(ngModel)]="contactoCredito.nombre" [disabled]="bloquearGuardado"/>
+                                                <label>Nombre(s)*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputContactoApellidoPaterno{{idContacto}}" type="text" pInputText name="inputContactoApellidoPaterno{{idContacto}}"
+                                                       #inputContactoApellidoPaterno{{idContacto}}="ngModel" required="true"
+                                                       [(ngModel)]="contactoCredito.apellidoPaterno" [disabled]="bloquearGuardado"/>
+                                                <label>Apellido Paterno*</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputContactoApellidoMaterno{{idContacto}}" type="text" pInputText name="inputContactoApellidoMaterno{{idContacto}}"
+                                                       #inputContactoApellidoMaterno{{idContacto}}="ngModel" required="true"
+                                                       [(ngModel)]="contactoCredito.apellidoMaterno" [disabled]="bloquearGuardado"/>
+                                                <label>Apellido materno</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                            <span class="md-inputfield">
+<!--                                                <p-inputMask mask="(99)99999999" [(ngModel)]="contactoCredito.telefono"-->
+<!--                                                             required="true" placeholder="" #telefContactoMask="ngModel"-->
+<!--                                                             size="30" name="telefContactoMask" ></p-inputMask>-->
+                                                <input id="inputContactoTelefono{{idContacto}}" type="tel" pInputText
+                                                       name="inputContactoTelefono{{idContacto}}" [(ngModel)]="contactoCredito.telefono"
+                                                       required="true" #inputContactoTelefono{{idContacto}}="ngModel"
+                                                       [disabled]="bloquearGuardado" (change)="esTelefonoValido('telefonoContacto', idContacto)"
+                                                        maxlength="10"/>
+<!--                                                pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"/>-->
+                                                <label>Teléfono*</label>
+                                                <span *ngIf="!contactoCredito.telefonoContactoNoValido" style="color: #b00000;">El telefono no es válido.</span>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                            <span class="md-inputfield">
+                                                <input id="inputContactoEmail{{idContacto}}" type="email" pInputText name="inputContactoEmail{{idContacto}}"
+                                                       required="true" #inputContactoEmail{{idContacto}}="ngModel" (change)="esEmailValido('correoContacto', idContacto)"
+                                                       [(ngModel)]="contactoCredito.email" [disabled]="bloquearGuardado"
+                                                       pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"/>
+                                                <label>Email*</label>
+                                                <span *ngIf="!contactoCredito.correoContactoNoValido" style="color: #b00000;">El email no es válido.</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <fieldset>
+                                    <legend>
+                                        <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
+                                            Archivos de solicitud
+                                        </h3>
+                                    </legend>
+                                    <p-table [value]="nuevaSolicitudCreditoDTO.listaArchivoCreditoDTO" [rows]="10" dataKey="pagoDTO.idPago"
+                                             selectionMode="single" styleClass="ui-table-cars" [responsive]="true" sortField="idTipoArchivo" sortOrder="1">
+                                        <ng-template pTemplate="caption">
+                                            Listado de archivos de crédito
+                                        </ng-template>
+                                        <ng-template pTemplate="header" let-columns>
+                                            <tr>
+                                                <th  width="20%" pSortableColumn="idTipoArchivo"><p-sortIcon field="idTipoArchivo"></p-sortIcon>></th>
+                                                <th class="cabecera" width="40%">Archivo </th>
+                                                <th class="cabecera" width="40%">Acciones</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                                            <tr>
+                                                <td class="center" width="30%">
+                                                    <img [src]="rowData.archivo == null ? './assets/layout/images/image-not-found.svg': 'data:image/jpeg;base64,' + rowData.archivo"
+                                                         style="cursor: pointer; max-width: 70px; max-height: 70px"
+                                                         id="img{{rowIndex}}" (click)="showLightbox(rowIndex)">
+                                                </td>
+                                                <td class="center" width="30%">
+                                                    {{rowData.tipoArchivoDTO.descripcion}}
+                                                </td>
+                                                <td class="center" width="40%">
+                                                    <input style="display:none"
+                                                           type="file"
+                                                           id="file{{rowIndex}}"
+                                                           name="file{{rowIndex}}"
+                                                           accept="image/.jpg, image/.png"
+                                                           (change)="onSelectFile($event)"
+                                                           #fileInput>
+
+                                                    <div class="ui-g-12 ui-md-4 ui-lg-4">
+                                                        <button type="button" pButton pRipple icon="ui-icon-search" class=""
+                                                                pTooltip="Seleccionar archivo" (click)="fileInput.click()"
+                                                                id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
+                                                        </button>
+                                                    </div>
+                                                    <div class="ui-g-12 ui-md-4 ui-lg-4">
+                                                        <button type="button" pButton pRipple icon="ui-icon-backup" class=""
+                                                                pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)"
+                                                                id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
+                                                        </button>
+                                                    </div>
+                                                    <div class="ui-g-12 ui-md-4 ui-lg-4">
+                                                        <button type="button" pButton pRipple icon="ui-icon-delete" class=""
+                                                                pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)"
+                                                                id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ui-g" *ngIf="muestraDetalle">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <button pButton type="button" label="Regresar"
+                                        style="width:140px; display: block; margin-left: auto; margin-right: auto;"
+                                        icon="ui-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <button pButton type="button" label="Guardar"
+                                        style="width:140px; display: block; margin-left: auto; margin-right: auto;"
+                                        icon="ui-icon-save" (click)="guardarSolicitudCredito()"
+                                        [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
+                                        || bloquearGuardadoConcluida" *ngIf="!esAnalista">
+                                </button>
+                                <button pButton type="button" label="Cambiar estatus"
+                                        style="width:140px; display: block; margin-left: auto; margin-right: auto;"
+                                        icon="ui-icon-add-circle" (click)="onAbreCambiaEstatus()"
+                                        [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-dialog class="ventanaEmergente" header="Cambiar estatus de solicitud" [(visible)]="displayCambioEstatus" modal="true"
+              *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '30vw'}">
+        <form name="formaObservaciones" novalidate #formaObservaciones="ngForm">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-12 ui-lg-12" style="padding-top: 0px;">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12" style="padding-top: 0px;">
+                        <span class="md-inputfield">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <span class="md-inputfield">
+                                    <p-dropdown [options]="catalogoEstatusCreditoDTO" [(ngModel)]="estatusCreditoSeleccionado"
+                                        optionLabel="descripcion" [showClear]="true" placeholder="-" (onChange)="validarDialogCambiaEstatus()"
+                                        name="estatusCreditoDropDown" required="true">
+                                    </p-dropdown>
+                                    <label>Estatus de crédito</label>
+                                </span>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <span>
+                                    <label for="float-input">Escribe aquí tus comentarios</label>
+                                    <textarea cols="30" id="float-input" pInputTextarea rows="5"
+                                        class="p-inputtextarea p-inputtext p-component"
+                                        style="width: 330px; height: 150px; border: 1px solid #737373;"
+                                        placeholder="" required="true"
+                                        #textAreaObserva (change)="observacion = textAreaObserva.value; validarDialogCambiaEstatus()"></textarea>
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        <p-footer>
+            <div class="ui-g">
+                <div class="ui-g-6 ui-md-6 ui-lg-6">
+                    <button pButton type="button" icon="pi pi-check" label="Guardar"
+                            (click)="onCloseDialogCambiaEstatus('SI')"
+                            [disabled]="!formuObservacionValido">
+                    </button>
+                </div>
+                <div class="ui-g-6 ui-md-6 ui-lg-6">
+                    <button pButton type="button" icon="pi pi-times" label="Cancelar"
+                            (click)="onCloseDialogCambiaEstatus('NO')"></button>
+                </div>
+            </div>
+        </p-footer>
+        </form>
+    </p-dialog>
+</block-ui>

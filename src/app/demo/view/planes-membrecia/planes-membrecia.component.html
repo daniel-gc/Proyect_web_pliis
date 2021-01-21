@@ -1,0 +1,296 @@
+<link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+<block-ui>
+    <div class="ui-fluid">
+        <p-toast></p-toast>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card">
+                    <div class="ui-g" *ngIf="mostrarPlanes">
+                        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+                            <h1>Planes de membrecía</h1>
+                        </div>
+                        <div class="ui-g-4 ui-md-4 ui-lg-4 ui-xl-4" *ngFor="let plan of catalogoPlan">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-contenedor">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-cabecera"
+                                    style="background-color: {{plan.listaColorPlanDTO[0].colorHex}}; background-image: linear-gradient(180deg, {{plan.listaColorPlanDTO[0].colorHex}} 0%, {{plan.listaColorPlanDTO[1].colorHex}} 20%, {{plan.listaColorPlanDTO[2].colorHex}} 100%);">
+                                    <div class="plan-nombre">{{plan.nombre}}</div>
+                                    <div class="plan-detalle">
+                                        <div class="ui-g-8 ui-md-8 ui-lg-8 ui-xl-8 plan-monto">
+                                            ${{plan.monto}}
+                                        </div>
+                                        <div class="ui-g-4 ui-md-4 ui-lg-4 ui-xl-4 plan-contenedor-cent-mon">
+                                            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-centavos">
+                                                00
+                                            </div>
+                                            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-moneda">
+                                                {{plan.moneda}}
+                                            </div>
+                                        </div>
+                                        <div class="plan-duracion">
+                                            <span class="">por {{plan.duracion}} {{plan.unidadDuracion}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-desc">
+                                    <p class="">{{plan.descripcion}}</p>
+                                    <button class="button" (click)="onSelectPlan(plan)"
+                                        style="color:{{plan.listaColorPlanDTO[0].colorHex}};">
+                                        Seleccionar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g" *ngIf="mostrarFormTarjeta">
+                        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+                            <h1>Información de tarjeta</h1>
+                        </div>
+                        <div class="tContenedor">
+                            <section class="tarjeta" [ngClass]="{'active': voltearTarjeta}" id="tarjeta" (click)="onClickTarjeta('tarjeta', 'S')">
+                                <div class="tDelantera">
+                                    <div class="tLogo-marca">
+                                        <img src="{{datosTarjeta.srcImagen == '' ? './assets/layout/images/pagos_tarjeta/logos/logo_vacio.png': datosTarjeta.srcImagen}}">
+                                    </div>
+                                    <img src="./assets/layout/images/pagos_tarjeta/chip-tarjeta.png" class="tChip">
+                                    <div class="tDatos">
+                                        <div class="tGrupo" id="tNumero">
+                                            <p class="tLabel">Número Tarjeta</p>
+                                            <p class="tNumero">
+                                                {{datosTarjeta.numeroTarjeta == '' ? '#### #### #### ####' : datosTarjeta.numeroTarjeta}}
+                                            </p>
+                                        </div>
+                                        <div class="tFlexbox">
+                                            <div class="tGrupo" id="tNombre">
+                                                <p class="tLabel">Nombre Tarjeta</p>
+                                                <p class="tNombre">
+                                                    {{datosTarjeta.nombreTarjeta == '' ? 'José Antonio García Hernández' : datosTarjeta.nombreTarjeta}}
+                                                </p>
+                                            </div>
+                                            <div class="tGrupo" id="tExpiracion">
+                                                <p class="tLabel">Fecha Expiración</p>
+                                                <p class="tExpiracion">
+                                                    <span class="tMes">
+                                                        {{datosTarjeta.mesExpira == null ? 'MM' : datosTarjeta.mesExpira.codigo}}
+                                                    </span> /
+                                                    <span class="tAnio">
+                                                        {{datosTarjeta.anioCorto == '' ? 'AA' : datosTarjeta.anioCorto}}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tTrasera">
+                                    <div class="tBarra-magnetica">
+
+                                    </div>
+                                    <div class="tDatos">
+                                        <div class="tGrupo" id="tFirma">
+                                            <p class="tLabel">Firma</p>
+                                            <div class="tFirma">
+                                                <p>
+                                                    {{datosTarjeta.nombreTarjeta == '' ? 'José Antonio García Hernández' : datosTarjeta.nombreTarjeta}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tGrupo" id="tCcv">
+                                            <p class="tLabel">CCV</p>
+                                            <p class="tCcv">
+                                                {{datosTarjeta.ccv}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="tLeyenda">  </p>
+                                    <a href="#" class="tLink-banco">  </a>
+                                </div>
+                            </section>
+                            <div class="tContenedor-btn">
+                                <button class="tBtn-abrir-formulario" [ngClass]="{'active': voltearBoton}" id="tBtn-abrir-formulario" (click)="onClickTarjeta('btn', 'S')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+        <!--                    #formTarjeta="ngForm"-->
+                            <div id="tFormulario-tarjeta" class="tFormulario-tarjeta"
+                                [ngClass]="{'active': mostrarFormularioT}">
+                                <div class="tGrupo">
+                                    <label for="inputNumero">Número Tarjeta*</label>
+                                    <input type="text" id="inputNumero" maxlength="19" required="true"
+                                        autocomplete="off" [(ngModel)]="datosTarjeta.numeroTarjeta"
+                                        (keyup)="validarNumTarjeta()">
+        <!--                                   formControlName="inputNumero">-->
+                                </div>
+                                <div class="tGrupo">
+                                    <label for="inputNombre">Nombre Tarjeta*</label>
+                                    <input type="text" id="inputNombre" maxlength="30" required="true"
+                                        autocomplete="off" [(ngModel)]="datosTarjeta.nombreTarjeta"
+                                        (keyup)="validarNombre()">
+                                </div>
+                                <div class="tFlexbox">
+                                    <div class="tGrupo tExpira">
+                                        <label for="tSelectMes">Válida hasta</label>
+                                        <div class="tFlexbox">
+                                            <div class="tGrupo-select">
+                                                <select name="tMes" id="tSelectMes"
+                                                        [(ngModel)]="mesSeleccionado" required="true"
+                                                        (change)="validaMesAnio('mes', mesSeleccionado)">
+                                                    <option value="-1" disabled selected>Mes*</option>
+                                                    <option [value]="mes.idMes" *ngFor="let mes of mesesTarjeta">{{mes.nombre}}</option>
+                                                </select>
+                                                <i class="fas fa-angle-down"></i>
+                                            </div>
+                                            <div class="tGrupo-select">
+                                                <select name="tAnio" id="tSelectAnio"
+                                                        [(ngModel)]="anioSeleccionado" required="true"
+                                                        (change)="validaMesAnio('anio', anioSeleccionado)">
+                                                    <option value="-1" disabled selected>Año*</option>
+                                                    <option [value]="anio" *ngFor="let anio of aniosTarjeta">{{anio}}</option>
+                                                </select>
+                                                <i class="fas fa-angle-down"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tGrupo tCcv">
+                                        <label for="tInputCCV">CCV*</label>
+                                        <input type="text" id="tInputCCV" maxlength="5"
+                                            [(ngModel)]="datosTarjeta.ccv" required="true"
+                                            (keyup)="validarCcv()">
+                                    </div>
+                                </div>
+
+                                Todos los campos son obligatorios.
+                                <div class="tFlexbox">
+                                    <button type="button" class="btnRegresar" (click)="onRegresaAPlanes()">
+                                        Seleccionar otro plan
+                                    </button>
+                                    <button type="submit" class="tBtn-enviar" (click)="onConfirmaPago()">
+                                        Proceder al pago
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g" *ngIf="mostrarConfirmaPago">
+                        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+                            <h1>Confirma los datos</h1>
+                        </div>
+                        <div class="confContenedor">
+                            <div class="confPlanSeleccionado">
+                                <div class="confLabelT">
+                                    <p>Detalles del plan seleccionado</p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Plan seleccionado:</p>
+                                    <p class="confDato confPlanNombre">
+                                        {{planSeleccionado.nombre}}
+                                    </p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Descripcion:</p>
+                                    <p class="confDato confPlanDescripcion">
+                                        {{planSeleccionado.descripcion}}
+                                    </p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Monto:</p>
+                                    <p class="confDato confPlanMonto">
+                                        $ {{planSeleccionado.monto}}.00 {{planSeleccionado.moneda}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="configInfoTarjeta">
+                                <div class="confLabelT">
+                                    <p>Detalles de transaccion</p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Número tarjeta:</p>
+                                    <p class="confDato confTarjetaNumero">
+                                        {{datosTarjeta.numeroTarjeta}}
+                                    </p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Nombre Tarjeta:</p>
+                                    <p class="confDato confTarjetaNombre">
+                                        {{datosTarjeta.nombreTarjeta}}
+                                    </p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Fecha Expiración:</p>
+                                    <p class="confDato confTarjetaExpiracion">
+                                        {{datosTarjeta.mesExpira.codigo}} / {{datosTarjeta.anioCorto}}
+                                    </p>
+                                </div>
+                                <div class="confGrupo">
+                                    <p class="confLabel">Código de Seguridad:</p>
+                                    <p class="confDato confTarjetaCcv">
+                                        ****<!--{{datosTarjeta.ccv}}-->
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="confTerminosConfirmacion">
+                                <div class="confGrupo" style="width: 40% !important; margin: 30px auto auto;">
+                                    <span class="confCheckTerminosOpenpay">
+                                        <label class="container">
+                                            <p>Acepto los <a (click)="onClickTerminosCondiciones()">terminos y condiciones</a></p>
+                                            <input type="checkbox" [(ngModel)]="checkAceptaTerminos"
+                                            [disabled]="!mostrarBotonPago">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div class="confGrupoBtn">
+                                    <button type="button" class="btnRegresar "
+                                            (click)="onRegresaModificaDatos()"
+                                            *ngIf="mostrarBotonPago">
+                                        Modificar los datos
+                                    </button>
+                                    <button type="submit" class="tBtnProcederPago"
+                                            (click)="onRealizaPago()"
+                                            [disabled]="!checkAceptaTerminos"
+                                            *ngIf="mostrarBotonPago" >
+                                        Realizar pago
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <a routerLink="/" pTooltip="Regresar">
+                                <i class="material-icons">home</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-confirmDialog #cd>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()" *ngIf="mostrarBotonSiNo"></button>
+            <button type="button" pButton icon="pi pi-check" label="Sí" (click)="cd.accept()" *ngIf="mostrarBotonSiNo"></button>
+            <button type="button" pButton icon="pi pi-check" label="Salir" (click)="cd.accept()" *ngIf="!mostrarBotonSiNo"></button>
+        </p-footer>
+    </p-confirmDialog>
+    <p-dialog class="ventanaEmergente" header="Terminos y condiciones" [(visible)]="displayTerminosCondiciones" modal="true"
+              *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '50vw'}">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <p>PLIIS no recibe directamente del cliente el pago por servicios o productos.</p>
+                <p>Para formalizar su compra, utilizamos OpenPay ®, por lo cual las condiciones contractuales,
+                    transaccionales y de seguridad informática deberá consultarlas y apegarse a las mismas, en:
+                    <strong><a class="openOpenpay" (click)="onClickOpenOpenpay()">https://www.openpay.mx/en/terminos-servicio.html</a></strong>
+                </p>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <button pButton type="button" icon="pi pi-check" label="Sí" (click)="onCloseDialogTerminosCondiciones('SI')"></button>
+                    <button pButton type="button" icon="pi pi-times" label="No" (click)="onCloseDialogTerminosCondiciones('NO')"></button>
+                </div>
+            </div>
+        </p-footer>
+    </p-dialog>
+</block-ui>
+

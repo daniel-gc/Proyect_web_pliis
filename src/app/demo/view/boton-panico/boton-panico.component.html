@@ -1,0 +1,153 @@
+<block-ui>
+<div class="ui-fluid">
+<!--    <p-messages [value]="msgs"></p-messages>-->
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <p-toast [style]="{marginTop: '80px'}"></p-toast>
+            <div class="card">
+                <h1>Botón de pánico</h1>
+                <p-panel header="Causas de denuncia manejados por el sistema" [toggleable]="false">
+                    <p-tabView (onChange)="onTabChange($event)">
+                        <p-tabPanel header="Acoso sexual" [selected]="true">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    El acoso sexual es: “cualquier comportamiento —físico
+                                    o verbal— de naturaleza sexual que tenga el propósito o
+                                    produzca el efecto de atentar contra la dignidad de una
+                                    persona; en particular, cuando se crea un entorno laboral
+                                    intimidatorio, degradante u ofensivo”.
+                                    La definición del Protocolo para la Prevención, Atención
+                                    y Sanción del Hostigamiento Sexual y Acoso Sexual en
+                                    México agrega los siguientes elementos: se considera
+                                    una forma de violencia que conlleva un ejercicio abusivo
+                                    de poder, aunque no haya subordinación de la víctima;
+                                    coloca a la víctima en un estado de indefensión o de riesgo; y se concreta en uno o varios eventos.
+                                    <a href="https://appweb.cndh.org.mx/biblioteca/archivos/pdfs/Hostigamiento-Acoso-Sexual.pdf">Texto del CNDH</a>
+                                </div>
+                                <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+                                <div class ="ui-g-12 ui-md-8 ui-lg-8 embed-container">
+                                    <iframe height="400" width="600" frameborder="0" allowfullscreen
+                                            src="https://www.youtube.com/embed/tO66dmK57PQ">
+                                    </iframe>
+                                </div>
+                                <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+                            </div>
+                        </p-tabPanel>
+                        <p-tabPanel header="Hostigamiento laboral">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    El hostigamiento laboral o mobbing es una forma de estrés laboral que se caracteriza porque no ocurre por causas relacionadas directamente con el desempeño del trabajador. Sino que más bien es un problema social que tiene su origen en las relaciones que se generan entre las personas que laboran en el centro de trabajo.<br>
+                                    El hostigamiento laboral puede aparecer en cualquier momento y afecta por igual a hombres y mujeres  y en cualquier jerarquía laboral.<br>
+                                    El trabajador que es víctima de hostigamiento laboral recibe una violencia psicológica injustificada a través de actos negativos y hostiles en el trabajo por parte de sus compañeros o superiores. De forma sistemática y permanente, durante un tiempo prolongado, que puede ser meses o años.
+                                    Este hostigamiento comúnmente tiene como finalidad el aislamiento de la víctima, su marginación y exclusión de la organización. Ya que las conductas van dirigidas a atacar distintos aspectos de la persona como su dignidad, capacidad profesional, vida privada e incluso sus cualidades físicas y morales.
+                                </div>
+                                <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+                                <div class ="ui-g-12 ui-md-8 ui-lg-8 embed-container">
+                                    <iframe height="400" width="600" frameborder="0" allowfullscreen
+                                            src="https://www.youtube.com/embed/Vi5p3cnQu_A"></iframe>
+                                </div>
+                                <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+                            </div>
+                        </p-tabPanel>
+                        <p-tabPanel header="Estrés laboral">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    Tipo de estrés donde la creciente presión en el entorno laboral puede provocar la saturación física y/o mental del trabajador, generando diversas consecuencias que no sólo afectan la salud, sino también su entorno más próximo ya que genera un desequilibrio entre lo laboral y lo personal.<br>
+                                    El 75% de los mexicanos padece fatiga por estrés laboral, superando a países como China y Estados Unidos. <br>
+                                    Síntomas emocionales:<br>
+                                    Ansiedad, miedo, irritabilidad, mal humor, frustración, agotamiento, impotencia, inseguridad, desmotivación, intolerancia.<br>
+                                    Síntomas gisiológicos: <br>
+                                    Músculos contraídos, dolor de cabeza, problemas de espalda o cuello, malestar estomacal, fatiga, infecciones, palpitaciones, respiración agitada, aumento de la presión sanguínea, agotamiento, mayor riesgo de obesidad y de problemas cardiovasculares, deterioro en la memori a, problemas de sueño.<br>
+                                </div>
+                                <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+                                <div class ="ui-g-12 ui-md-8 ui-lg-8 embed-container">
+                                    <iframe height="400" width="600" frameborder="0" allowfullscreen
+                                            src="https://www.youtube.com/embed/mWIn9SZpp-o"></iframe>
+                                </div>
+                                <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+                            </div>
+                        </p-tabPanel>
+                    </p-tabView>
+                </p-panel>
+            </div>
+            <div class="card">
+                <h1>Formulación de la denuncia</h1>
+                <p>
+                    Luego de ver la información proporcionada en el apartado anterior, esperamos que haya comprendido cuál es el caso que desea denunciar.<br>
+                    Antes que todo, confirme que está consciente de su decisión y luego, llene el siguiente formulario, sabiendo de antemano que los datos proporcionados será totalmente anónimos.<br>
+                </p>
+                <form name="formaRegistro" novalidate #formaRegistro="ngForm">
+                    <div class="ui-g form-group">
+                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                            <p-checkbox name="aceptoTerminos" binary="true" [(ngModel)]="aceptoTerminos"
+                                        label="He leído la información proporcionada y conozco las implicaciones de la denuncia que realizaré"></p-checkbox>
+                        </div>
+
+                        <h3>Seleccione el, o los motivos, de su denuncia:</h3>
+                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                            <div class="ui-g-12"><p-checkbox name="group1" value="ACOSO" label="Acoso sexual" [(ngModel)]="selectedCausas" inputId="as"></p-checkbox></div>
+                            <div class="ui-g-12"><p-checkbox name="group1" value="HOSTIGAMIENTO" label="Hostigamiento laboral" [(ngModel)]="selectedCausas" inputId="al"></p-checkbox></div>
+                            <div class="ui-g-12"><p-checkbox name="group1" value="ESTRES" label="Estrés laboral" [(ngModel)]="selectedCausas" inputId="el"></p-checkbox></div>
+                        </div>
+                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                            <h3>Sea tan amable de proporcionar una descripción de su caso:</h3>
+                            <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="panicoDTO.descripcion" name="descripcion" required="true"></textarea>
+                        </div>
+                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                            <h3>Los siguientes datos nos ayudarán a brindarle una mejor respuesta</h3>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <span class="md-inputfield">
+                                <p-dropdown [options]="listaEmpresas" [(ngModel)]="empresaSeleccionada" optionLabel="nombre"
+                                             name="empresasDropDown" required="true" (onChange)="onChangeEmpresas($event)"></p-dropdown>
+                                <label> Seleccione su empresa</label>
+                            </span>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <span class="md-inputfield" *ngIf="empresaSeleccionada">
+                            <p-dropdown [options]="empresaSeleccionada.centrosTrabajo" [(ngModel)]="centroTrabajoSeleccionado" optionLabel="nombre"
+                                        name="centroTrabajoDropDown" required="true" filter="true" filterBy="value.nombre"></p-dropdown>
+                            <label> Seleccione su centro de trabajo</label>
+                        </span>
+                        </div>
+<!--                        <div class="ui-g-12 ui-md-6 ui-lg-4">-->
+<!--                            <span class="md-inputfield">-->
+<!--                                <input  type="text" pInputText/>-->
+<!--                                <label>Departamento, área de trabajo etc.</label>-->
+<!--                            </span>-->
+<!--                        </div>-->
+                        <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <span class="md-inputfield">
+                                <input type="text" pInputText name="NombreDeunciado" [(ngModel)]="panicoDTO.nombreDenunciado" />
+                                <label>Nombre(s) y apellidos del denunciado</label>
+                            </span>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <button pButton type="button" label="Enviar" style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                                        icon="ui-icon-send" (click)="confirm1()"  [disabled]="!formaRegistro.valid || selectedCausas.length === 0 || !aceptoTerminos"></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <br>
+
+
+            </div>
+        </div>
+    </div>
+
+    <p-confirmDialog #cd header="Confirmación de denuncia" icon="pi pi-exclamation-triangle">
+        <p-footer>
+            <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+            <button type="button" pButton icon="pi pi-check" label="Sí" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+
+
+</div>
+</block-ui>

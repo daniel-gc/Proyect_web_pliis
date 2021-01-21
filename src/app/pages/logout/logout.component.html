@@ -1,0 +1,6 @@
+<p-confirmDialog #cd  header="Confirmación" icon="ui-icon-warning">
+    <p-footer>
+        <button type="button" pButton icon="ui-icon-cancel" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="ui-icon-done" label="Sí" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>

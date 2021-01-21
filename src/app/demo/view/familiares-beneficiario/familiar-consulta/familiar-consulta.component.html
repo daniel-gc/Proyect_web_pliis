@@ -1,0 +1,88 @@
+<block-ui>
+    <div class="ui-fluid">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card no-margin">
+
+                    <div class="row" id="tablaResultado">
+
+                        <div class="col">
+
+                            <p-table [value]="listFamiliaresBeneficiario" [paginator]="true" [rows]="16" dataKey="idFamBeneficiario" selectionMode="single" [(selection)]="familiarSelecionado" styleClass="ui-table-cars" [columns]="cols" [responsive]="true" sortField="nombres" fbxz
+                                sortOrder="sortOrder">
+                                <ng-template pTemplate="caption">
+                                    <div class="row">
+                                        <table>
+                                            <tr>
+                                                <td>Listado de familiares</td>
+                                                <td>
+                                                    <div class="col-md-2">
+                                                        <button pButton type="button" style="width:140px; margin-left: auto; margin-right: auto;" label="Imprimir" icon="ui-icon-print" (click)="takeScreen()"></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <td class="cabecera col" pSortableColumn="nombres">
+                                            <p class="pTextCabecera">Nombre(s)</p>
+                                            <p-sortIcon field="nombres"></p-sortIcon>
+                                        </td>
+                                        <th class="cabecera" pSortableColumn="apPaterno">
+                                            <p class="pTextCabecera">Apellido Paterno</p>
+                                            <p-sortIcon field="apPaterno"></p-sortIcon>
+                                        </th>
+                                        <th class="cabecera" pSortableColumn="apMaterno">
+                                            <p class="pTextCabecera">Apellido Materno</p>
+                                            <p-sortIcon field="apMaterno"></p-sortIcon>
+                                        </th>
+                                        <th class="cabecera" pSortableColumn="fechaNaciomiento">
+                                            <p class="pTextCabecera">Fecha de Nacimiento</p>
+                                            <p-sortIcon field="fechaNaciomiento"></p-sortIcon>
+                                        </th>
+                                        <th class="cabecera" pSortableColumn="relacionFamiliar">
+                                            <p class="pTextCabecera">Parentesco</p>
+                                            <p-sortIcon field="relacionFamiliar"></p-sortIcon>
+                                        </th>
+                                        <th class="cabecera" pSortableColumn="telefono">
+                                            <p class="pTextCabecera">Teléfono</p>
+                                            <p-sortIcon field="telefono"></p-sortIcon>
+                                        </th>
+                                        <th class="cabecera">
+                                            <p class="pTextCabecera">Fecha de registro</p>
+                                        </th>
+                                        <th class="cabecera">
+                                            <p class="pTextCabecera">Acción</p>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr>
+                                        <td class="center">{{rowData.nombres}}</td>
+                                        <td class="center">{{rowData.apPaterno}}</td>
+                                        <td class="center">{{rowData.apMaterno}}</td>
+                                        <td class="center">{{rowData.fechaNaciomiento}}</td>
+                                        <td class="center">{{rowData.relacionFamiliar.nombre}}</td>
+                                        <td class="center">{{rowData.telefono}}</td>
+                                        <td class="center">{{ rowData.fhCreacion | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                                        <td class="center">
+                                            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="modificarRegistro(rowData)">
+                                                Modificar
+                                            </button><br/><br/>
+                                            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="eliminarRegistro(rowData)">
+                                                Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block-ui>

@@ -1,0 +1,43 @@
+<block-ui>
+    <p-toast></p-toast>
+    <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
+
+        <div class="login-body">
+            <div class="card login-panel ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <img src="assets/layout/images/apple-touch-icon-72x72-precomposed.png">
+                    </div>
+
+                    <div class="ui-g-12">
+                    <span class="md-inputfield">
+                        <input type="text" pInputText [(ngModel)]="form.nombreUsuario" name="username"
+                               autocomplete="off" required>
+                        <label>Usuario</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12">
+                    <span class="md-inputfield">
+                        <input type="password" pInputText [(ngModel)]="form.password" name="password"
+                               autocomplete="off" required/>
+                        <label>Contraseña</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12" align="left">
+                        <!--                    <div class="card card-w-title">-->
+                        <button pButton type="submit" label="Login" style="width: 100%" icon="ui-icon-account-circle"
+                                [disabled]="!f.valid"></button>
+                        <p-slideMenu #menu [popup]="true" [model]="items" [viewportHeight]="180"></p-slideMenu>
+                        <button type="button" pButton icon="ui-icon-person-add" label="Registro"
+                                (click)="menu.toggle($event)" style="width: 100%"></button>
+                        <button pButton type="button" label="Olvidé mi contraseña" style="width: 100%" class="pink-btn"
+                                icon="ui-icon-help" [routerLink]="'/olvidePassw'"></button>
+                        <a href="https://pliis.mx:8443/" target="_blank" style="alignment: right">Página de bienvenida</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</block-ui>

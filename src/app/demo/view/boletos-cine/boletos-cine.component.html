@@ -1,0 +1,91 @@
+<block-ui>
+    <div class="ui-fluid">
+        <p-toast></p-toast>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card no-margin">
+                    <h1>Boletos de cine</h1>
+                    <form name="formaBoletoCine" #formaBoletoCine="ngForm">
+                        <div class="ui-g form-group">
+<!--                            <div class="ui-g-12">-->
+<!--                                <button type="button" class="btn btn-primary mt-3 mb-5 mx-auto d-block" (click)="crearImagen()">Crear Imagen</button>-->
+<!--                            <div align="center">-->
+<!--                                <h4>Imagen Creada:</h4>-->
+<!--                                <img src="{{imagenCreada}}">-->
+<!--                            </div>-->
+<!--                            <a type="button" class="btn btn-success mt-3 mx-auto d-block" href="{{imagenCreada}}" download>-->
+<!--                                   Descargar-->
+<!--                            </a>-->
+<!--                                {{imagenCreada}}-->
+<!--                            </div>-->
+                            <div class="ui-g-12 ui-md-offset-2 ui-md-8 ui-lg-offset-3 ui-lg-6">
+                                <div class="solicitaBoletoCine" *ngIf="mostrarSolicitaBoletoCine === true"
+                                     (click)="onSolicitarBoleto();">
+                                    <div class="textoSolicita">
+                                        <p>Click aquí para solicitar tus boletos de cine</p>
+                                    </div>
+                                    <div class="imagenSolicita">
+                                        <img src="./assets/layout/images/Boleto-Cine.png">
+                                    </div>
+                                </div>
+                                <div class="confirmaBoletoCine" *ngIf="mostrarBoletoCine === true">
+                                    <div class="textoConfirma">
+                                        <p>Espera a que se descargue tu imagen automaticamente, de no ser asi, solo da click
+                                            <a type="button" class="btn btn-success mt-3 mx-auto d-block" (click)="descargarImagen()" download>
+                                                aquí
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="imagenConfirma">
+                                        <img src="./assets/layout/images/Boleto-Cine.png">
+                                    </div>
+                                </div>
+                                <div class="boletoCineError" *ngIf="mostrarBoletoCineError === true">
+                                    <div class="textoBoletoCineError">
+<!--                                        <p>{{boletoCineDTOerror.msgError}}</p>-->
+                                        <p>POR EL MOMENTO NO CUENTAS CON CANJE DISPONIBLE ÚLTIMO CANJE: 2020-07-27</p>
+                                    </div>
+                                    <div class="imagenBoletoCineError">
+                                        <img src="./assets/layout/images/Boleto-Cine.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contenedorBoletoCine">
+                                <div class="boletoCine" id="boletoCine" *ngIf="mostrarBoletoCine === true">
+                                    <div class="fondoBoleto">
+                                        <img src="data:image/jpg;base64,{{boletoCineDTO.fondoByteArray}}">
+<!--                                        <img src="http://www.link2loyalty.com/CertificadoBoleto/certificado/PruebaTradicional.jpg">-->
+                                    </div>
+                                    <div class="datosBoleto">
+                                        <div class="vigenciaBoleto">
+                                            {{boletoCineDTO.vigencia}}
+<!--                                            Jan  1 250-->
+                                        </div>
+                                        <div class="cbBoleto">
+                                            <img src="data:image/jpg;base64,{{boletoCineDTO.cbarrasByteArray}}">
+<!--                                            <img src="http://www.link2loyalty.com/CertificadoBoleto/codigo/Cinemex/1014/865270061738.jpg">-->
+                                        </div>
+                                        <div class="folioBoleto">
+                                            {{boletoCineDTO.folio}}
+<!--                                            865270061738-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <a routerLink="/" pTooltip="Regresar">
+                                <i class="material-icons">home</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block-ui>
+<p-dialog  modal="true">
+</p-dialog>

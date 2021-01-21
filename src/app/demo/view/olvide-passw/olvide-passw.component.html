@@ -1,0 +1,108 @@
+<block-ui>
+    <div class="ui-fluid">
+        <p-toast></p-toast>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card no-margin">
+                    <h1>Recuperación de contraseña. PLIIS.</h1>
+                    <form name="formaRequisitos" *ngIf="!tokenSolicicitado" #formaRequisitos="ngForm" novalidate>
+                        <div class="ui-g form-group">
+                            <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
+                                <span class="md-inputfield">
+                                    <input id="inputEmailAfiliado" type="email" pInputText #inputEmailAfiliado="ngModel"
+                                           [(ngModel)]="emailAfiliado" name="inputEmailAfiliado"
+                                           required="true"
+                                           pTooltip="Le llegarán las instrucciones a su correo electrónico. Tiene 1 hora para terminar el proceso."/>
+                                    <label for="inputEmailAfiliado">Escriba su correo electrónico</label>
+                                </span>
+                            </div>
+                            <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                                        pButton label="Generar token" icon="ui-icon-build" (click)="onGenerarToken()"
+                                        [disabled]="!emailValido() || !formaRequisitos.valid"></button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div *ngIf="tokenSolicicitado">
+                        <form name="formaRegistro" novalidate #formaRegistro="ngForm">
+                            <div class="ui-g form-group" *ngIf="tokenSolicicitado">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <span class="md-inputfield">
+                                    <textarea pInputTextarea id="inputToken" [rows]="3" [cols]="30"  name="inputToken"
+                                           #inputToken="ngModel" required autoResize="autoResize"
+                                           [(ngModel)]="token" placeholder="Token"></textarea>
+                                </span>
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <span class="md-inputfield">
+                                    <input type="password" pPassword [(ngModel)]="pass0" feedback="false"
+                                           weakLabel="Débil" required
+                                           strongLabel="Fuerte" #pass00="ngModel"
+                                           mediumLabel="Media" promptLabel="Contraseña"
+                                           (ngModelChange)="mouseOutPass($event)" name="pass00"/>
+                                    <label>Contraseña*</label>
+                                    <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                        Las contraseñas no coinciden
+                                    </div>
+                                </span>
+
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <span class="md-inputfield">
+                                    <input type="password" pPassword [(ngModel)]="pass1" feedback="false"
+                                           weakLabel="Débil" required
+                                           strongLabel="Fuerte" #pass01="ngModel"
+                                           mediumLabel="Media" promptLabel="Repita la contraseña"
+                                           (ngModelChange)="mouseOutPass($event)"
+                                           name="pass01"/>
+                                    <label>Repita la contraseña*</label>
+                                    <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                        Las contraseñas no coinciden
+                                    </div>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <button style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                                            pButton label="Cambiar contraseña" icon="ui-icon-autorenew" (click)="cambiaPassw()"
+                                            [disabled]="!formaRegistro.valid"></button>
+                                </div>
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <button pButton type="button" label="Login"
+                                            style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                                            icon="ui-icon-account-circle" routerLink="/login"></button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</block-ui>
+<p-dialog header="Operación exitosa" [(visible)]="display" modal="true">
+    Nuevo usuario creado.
+    <p-footer>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <button pButton type="button" label="Ok"
+                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                        icon="ui-icon-check" (click)="closeDialog()"></button>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>
+
+
+
+

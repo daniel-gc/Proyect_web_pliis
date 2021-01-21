@@ -1,0 +1,50 @@
+<block-ui>
+    <div class="ui-fluid">
+        <p-toast></p-toast>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card">
+                    <h1>Importación de datos a la plataforma PLIIS.</h1>
+                    <div class="ui-g">
+                        <div class="ui-g-4"></div>
+                        <div class="ui-g-4">
+                            <button pButton label="Importar" (click)="importaDatos()"></button>
+                        </div>
+                        <div class="ui-g-4"></div>
+                    </div>
+                    <div class="ui-g" *ngIf="listaLog.length > 0">
+                        <div class="ui-g-12">
+                            <p-table #dt [columns]="cols" [value]="listaLog" [responsive]="true" [paginator]="true" [rows]="10" dataKey="idLogImportacion" styleClass="ui-table-cars" >
+                                <ng-template pTemplate="caption">
+                                    Resultados de la importación
+                                    <div class="ui-table-globalfilter-container">
+                                        <input type="text" pInputText size="50" placeholder="Búsqueda por filtro" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:250px;">
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                                        </th>
+                                        <th style="width: 8em"></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr>
+                                        <td>{{rowData.idLogImportacion}}</td>
+                                        <td>{{rowData.momento}}</td>
+                                        <td>{{rowData.motivo}}</td>
+                                        <td>{{rowData.texto}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block-ui>
+
+

@@ -1,0 +1,103 @@
+<div class="ui-fluid">
+<div class="ui-g">
+    <div class="ui-g-12">
+        <div class="card">
+            <h1>Servicios adicionales del sistema, prestados por terceros</h1>
+            <p-panel header="Diferencia entre finiquito y liquidación" [toggleable]="true">
+                <div class="ui-g">
+
+
+                </div>
+                <p>
+                    El finiquito, es la suma de dinero que se le entrega a un trabajador cuando se termina la relación laboral por alguna de las siguientes causas:
+                </p>
+                <ul>
+                    <li>Renuncia voluntaria.</li>
+                    <li>Despido justificado, por haber cometido el trabajador alguna de las faltas señaladas en el artículo 47 de la Ley federal del Trabajo, como causas de rescisión, sin responsabilidad para la empresa.</li>
+                    <li>Terminación del contrato por obra o por tiempo determinado.</li>
+                    <li>Incapacidad permanente total.</li>
+                    <li>Invalidez.</li>
+                    <li>Muerte del trabajador (se paga a sus beneficiarios).</li>
+                </ul>
+                <p>El finiquito se integra por:</p>
+                <ul>
+                    <li>Salarios devengados.</li>
+                    <li>Parte proporcional de vacaciones.</li>
+                    <li>Parte proporcional de prima de vacaciones.</li>
+                    <li>Parte proporcional de aguinaldo.</li>
+                </ul>
+                <p>La liquidación es la suma de dinero que se le paga al trabajador en caso de: cierre de la empresa, recorte de personal o despido injustificado.
+                Se integra con el finiquito, más el importe de 3 meses de sueldo como indemnización y la prima de antigüedad (12 días de salario por cada año trabajado).
+                </p>
+            </p-panel>
+            <p-tabView (onChange)="onTabChange($event)">
+                <p-tabPanel header="Cálculo de liquidación" [selected]="true">
+                    <form>
+                        <div class="ui-g form-group">
+                            <div class="ui-g-6 ui-md-4 ui-lg-2">
+                            <span class="md-inputfield">
+                                <p-calendar showButtonBar="true" dateFormat="dd/mm/yy" [(ngModel)]="fechaIngreso" required = "true"
+                                            [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019"
+                                            name="fechaIngreso"></p-calendar>
+                                <label>Fecha de ingreso</label>
+                            </span>
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2">
+                            <span class="md-inputfield">
+                                <p-calendar showButtonBar="true" dateFormat="dd/mm/yy" [(ngModel)]="fechaEgreso" name="fechaEgreso"
+                                            [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019"></p-calendar>
+                                <label>Fecha de egreso</label>
+                            </span>
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2" >
+                            <span class="md-inputfield">
+                                <p-spinner size="10" [step]="0.10" [(ngModel)]="salarioMensual" name="salarioMensual"></p-spinner>
+                                <label>Salario mensual</label>
+                            </span>
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2" >
+                            <span class="md-inputfield">
+                                <p-spinner size="10" [formatInput]="false" [(ngModel)]="diasAguinaldo" name="diasAguinaldo"></p-spinner>
+                                <label>Días de aguinaldo</label>
+                            </span>
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2" >
+                            <span class="md-inputfield">
+                                <p-spinner size="10" [formatInput]="false" [(ngModel)]="vacacionesAnuales" name="vacacionesAnuales"></p-spinner>
+                                <label>Vacaciones al año</label>
+                            </span>
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2" >
+                            <span class="md-inputfield">
+                                <p-spinner size="10" [formatInput]="false" [(ngModel)]="vacacionesPendientes" name="vacacionesPendientes"></p-spinner>
+                                <label>Vacaciones pendientes</label>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <button pButton type="submit" label="Calcular"
+                                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                                        icon="fas fa-calculator" (click)="showDialog()" ></button>
+                            </div>
+                        </div>
+                    </form>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </div>
+</div>
+</div>
+
+<p-dialog header="Resultado" [(visible)]="display" modal="true">
+    Monto a devengar: ${{monto}}
+    <p-footer>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <button pButton type="button" label="Ok"
+                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                        icon="ui-icon-check" (click)="closeDialog()" ></button>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>

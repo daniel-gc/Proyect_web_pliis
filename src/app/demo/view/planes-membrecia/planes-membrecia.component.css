@@ -1,0 +1,536 @@
+.plan-contenedor{
+    /*box-shadow: 0 3px 0 0 #3f51b5, 0 4px 4px -1px rgba(0, 0, 0, 0.6), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;*/
+    /*box-shadow: -2px 2px 6px 1px #3f51b5;*/
+    border: 1px solid #a4a6aa;
+    background: transparent;
+    background-color: transparent;
+    background-image: none;
+    /*border-radius: 0.2666666667rem;*/
+    padding: 0px;
+    /*margin: 5px;*/
+    transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
+}
+.plan-cabecera{
+    padding: 0px;
+    font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
+    color: #f3f6ff;
+}
+.plan-nombre{
+    font-size: 1.4rem !important;
+    line-height: 1.42;
+    font-weight: bold;
+    padding: 1rem 0 1rem 0;
+    text-align: center;
+}
+.plan-duracion{
+    text-align: center;
+    padding-bottom: 1.3rem;
+}
+.plan-detalle{
+    /*border-radius: 0.2666666667em;*/
+    /*text-align: center;*/
+}
+.plan-monto{
+    text-align: right;
+    font-size: 4rem !important;
+    font-weight: normal;
+    line-height: 1;
+    padding: 0px 5px 0px 0px;
+    height: 70px;
+}
+.plan-contenedor-cent-mon{
+    height: 70px;
+    padding: 0px;
+}
+.plan-centavos{
+    height: 35px;
+    padding: 10px 0px 0px 3px;
+    font-size: 1.9rem !important;
+    text-decoration: underline;
+}
+.plan-moneda{
+    height: 35px;
+    padding: 4px 0px 0px 3px;
+    font-size: 1.2rem !important;
+}
+.plan-desc{
+    /*border-radius: 0.2666666667em;*/
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.plan-comun{
+    background-color: #3F51B5;
+    background-image: linear-gradient(180deg, rgb(54, 121, 181) 0%, rgb(89, 106, 206) 20%, rgb(63, 81, 181) 100%);
+    color: #E6EAEF;
+}
+.plan-popular{
+    background-color: #3F51B5;
+    background-image: linear-gradient(180deg, rgb(63, 81, 181) 0%, rgb(89, 106, 206) 20%, rgb(40, 53, 147) 100%);
+    color: #E6EAEF;
+}
+/*-----------------------------------------------------*/
+/*          BOTON */
+.button {
+    --offset: 10px;
+    --border-size: 2px;
+    /*display: block;*/
+    position: relative;
+    padding: 1.1em .8em;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    /*color: #e55743;*/
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background .8s ease;
+}
+/*-----------------------------------------------------
+        TARJETA DE CREDITO
+  ----------------------------------------------------- */
+.tContenedor{
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background: #2fc631;*/
+    /*border: 1px solid #0f0f0f;*/
+}
+.tarjeta{
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    color: #ffffff;
+    transition: .3s ease all;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+    /*background: #7eb73d;*/
+}
+.tarjeta.active{
+    transform: rotateY(180deg);
+}
+.tarjeta > div{
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 315px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px 0 rgba(90,116,148,0.3);
+}
+/*---------------------------------------------------------*/
+/*---   Tarjeta Delantera
+/*---------------------------------------------------------*/
+.tarjeta .tDelantera{
+    width: 100%;
+    background: url(/assets/layout/images/pagos_tarjeta/bg-tarjeta/bg-tarjeta-02.jpg);
+    background-size: cover;
+}
+.tDelantera .tLogo-marca{
+    text-align: right;
+    min-height: 50px;
+}
+.tDelantera .tLogo-marca img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 80px;
+    max-height: 50px;
+}
+.tDelantera .tChip{
+    width: 100%;
+    max-width: 50px;
+    margin-bottom: 20px;
+}
+.tDelantera .tGrupo .tLabel{
+    font-size: 16px;
+    color: #7d8994;
+    margin-bottom: 5px;
+}
+.tDelantera .tGrupo .tNumero,
+.tDelantera .tGrupo .tNombre,
+.tDelantera .tGrupo .tExpiracion{
+    color: #ffffff;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0px;
+}
+.tDelantera .tFlexbox{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+/*---------------------------------------------------------*/
+/*---   Tarjeta Tracera
+/*---------------------------------------------------------*/
+.tarjeta .tTrasera{
+    width: 100%;
+    background: url(/assets/layout/images/pagos_tarjeta/bg-tarjeta/bg-tarjeta-01.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+.tarjeta .tTrasera .tBarra-magnetica{
+    height: 40px;
+    background: #000000;
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+.tTrasera .tDatos{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.tTrasera .tDatos p{
+    margin: 0;
+    margin-bottom: 5px;
+}
+.tTrasera .tDatos #tFirma{
+    width: 70%;
+}
+.tTrasera .tDatos #tFirma .tFirma{
+    height: 40px;
+    background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
+}
+.tTrasera .tDatos #tFirma .tFirma p{
+    line-height: 40px;
+    font-family: 'Liu Jian Mao Cao',cursive;
+    color: #000000;
+    font-size: 25px;
+    padding: 0 10px;
+    text-transform: capitalize;
+}
+.tTrasera .tDatos #tCcv{
+    width: 20%;
+}
+.tTrasera .tDatos #tCcv .tCcv{
+    background: #ffffff;
+    height: 40px;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+}
+.tTrasera .tLeyenda{
+    font-size: 14px;
+    line-height: 24px;
+}
+.tTrasera .tLink-banco{
+    font-size: 14px;
+    color: #ffffff;
+}
+/*---------------------------------------------------------*/
+/*---   Boton para mostrar formulario
+/*---------------------------------------------------------*/
+.tContenedor-btn .tBtn-abrir-formulario{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 20px;
+    background: #2664d2;
+    color: #ffffff;
+    position: relative;
+    top: -25px;
+    z-index: 3;
+    border-radius: 100%;
+    box-shadow: -5px 4px 8px rgba(24,56,182,0.4);
+    padding: 5px;
+    transition: all .2s ease;
+    border: none;
+    cursor: pointer;
+}
+.tContenedor-btn .tBtn-abrir-formulario:hover{
+    background: #1850b1;
+}
+.tContenedor-btn .tBtn-abrir-formulario.active{
+    transform: rotate(45deg);
+}
+/*---------------------------------------------------------*/
+/*---   Formulario tarjeta credito
+/*---------------------------------------------------------*/
+.tFormulario-tarjeta{
+    background: #e6e6e6;
+    width: 100%;
+    max-width: 700px;
+    padding: 150px 30px 30px 30px;
+    border-radius: 10px;
+    position: relative;
+    top: -150px;
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path .3s ease-out;
+}
+.tFormulario-tarjeta.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.tFormulario-tarjeta label{
+    display: block;
+    color: #7d8994;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+.tFormulario-tarjeta input,
+.tFormulario-tarjeta select {
+    border: 2px solid #ced6e0;
+    font-size: 18px;
+    height: 50px;
+    width: 100%;
+    padding: 5px 12px;
+    transition: .03s ease all;
+    border-radius: 5px;
+}
+.tFormulario-tarjeta .tBtn-enviar{
+    border: 2px solid #ced6e0;
+    font-size: 18px;
+    height: 50px;
+    width: 60%;
+    padding: 5px 12px;
+    transition: .03s ease all;
+    border-radius: 5px;
+}
+.tFormulario-tarjeta input:hover,
+.tFormulario-tarjeta select:hover{
+    border: 2px solid #93bded;
+}
+.tFormulario-tarjeta input:focus,
+.tFormulario-tarjeta select:focus{
+    outline: rgb(4,4,4);
+    box-shadow: 1px 7px 18px -5px rgba(90,116,148,0.3);
+}
+.tFormulario-tarjeta input{
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.tFormulario-tarjeta .tFlexbox{
+    display: flex;
+    justify-content: space-between;
+}
+.tFormulario-tarjeta .tExpira{
+    width: 100%;
+}
+.tFormulario-tarjeta .tCcv{
+    min-width: 100px;
+}
+.tFormulario-tarjeta .tGrupo-select{
+    width: 100%;
+    margin-right: 15px;
+    position: relative;
+}
+.tFormulario-tarjeta select{
+    -webkit-appearance: none;
+}
+.tFormulario-tarjeta .tGrupo-select i{
+    position: absolute;
+    color: #ced6e0;
+    top: 18px;
+    right: 15px;
+    transition: .3s ease all;
+}
+.tFormulario-tarjeta .tGrupo-select:hover i{
+    color: #93bded;
+}
+.tFormulario-tarjeta .tBtn-enviar{
+    border: none;
+    padding: 10px;
+    font-size: 22px;
+    color: #ffffff;
+    background: #2364d2;
+    box-shadow: 2px 2px 10px 0px rgba(0,85,212,0.4);
+}
+.tFormulario-tarjeta .tBtn-enviar:hover{
+    background: #1850b1;
+}
+/*-----------------------------------------------------
+        Formulario Confirmacion
+  ----------------------------------------------------- */
+.confContenedor{
+    width: 90%;
+    max-width: 1000px;
+    padding: 10px 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background: #2fc631;*/
+    /*border: 1px solid #0f0f0f;*/
+}
+.confContenedor .confPlanSeleccionado,
+.confContenedor .configInfoTarjeta{
+    width: 100%;
+}
+.confLabelT{
+    font-size: 20px;
+    border-bottom: 5px solid #0ba2af;
+    padding-bottom: 10px;
+}
+.confLabelT p{
+    margin: 0;
+    padding: 0;
+}
+.confGrupo {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+}
+.confGrupo .confLabel{
+    width: 35%;
+    color: #1d1f23;
+    font-size: 16px;
+    margin: 0px;
+    margin-right: 15px;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+}
+.confGrupo .confDato{
+    width: 50%;
+    color: #1d1f23;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0px;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+.confContenedor .configInfoTarjeta{
+    margin-top: 15px;
+}
+.confTerminosConfirmacion{
+    width: 100%;
+    padding-top: 20px;
+}
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.confCheckTerminosOpenpay{
+    margin-bottom: 20px;
+}
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 2px solid #0564b7;
+    border-radius: 3px;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+    border: none;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.confTerminosConfirmacion .confGrupoBtn{
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 30px;
+}
+.confTerminosConfirmacion .confGrupoBtn .tBtnProcederPago{
+    border: none;
+    padding: 10px;
+    font-size: 22px;
+    color: #ffffff;
+    background: #2364d2;
+    box-shadow: 2px 2px 10px 0px rgba(0,85,212,0.4);
+    width: 35%;
+    margin: auto;
+    border-radius: 5px;
+}
+.confTerminosConfirmacion .confGrupoBtn .tBtnProcederPago:hover{
+    background: #1850b1;
+}
+.confTerminosConfirmacion .confGrupoBtn .tBtnProcederPago:disabled{
+    background: #5d88f7;
+    color: #ededed;
+}
+.btnRegresar {
+    border: 2px solid #ced6e0;
+    font-size: 18px;
+    height: 50px;
+    width: 35%;
+    padding: 5px 12px;
+    -webkit-transition: .03s ease all;
+    transition: .03s ease all;
+    border-radius: 5px;
+
+    border: none;
+    padding: 10px;
+    font-size: 22px;
+    color: #43588a;
+    background: #9bc0d2;
+    box-shadow: 2px 2px 10px 0px rgba(151, 151, 151, 0.4);
+}
+.btnRegresar:hover{
+    background: #86acc1;
+}
+.confTerminosConfirmacion .confGrupoBtn .btnRegresar{
+    margin: auto;
+}
+.openOpenpay{
+    cursor: pointer;
+}
+.ventanaEmergente {
+    /*opacity: .98 !important;*/
+}

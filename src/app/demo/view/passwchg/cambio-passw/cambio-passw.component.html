@@ -1,0 +1,52 @@
+<div class="ui-g">
+    <p-toast></p-toast>
+    <div class="ui-g-12">
+        <div class="card">
+            <h1>Cambio de contraseña</h1>
+            <form name="cambioContrForm" novalidate #cambioContrForm="ngForm">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-4 ui-lg-4">
+                        <span class="ui-float-label">
+                            <input id="passwActual" name="passwActual" type="password" size="30" pInputText
+                                   [(ngModel)]="cambioPasswDTO.viejaContr">
+                            <label for="passwActual">Contraseña actual*</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4 ui-lg-4">
+                        <span class="md-inputfield">
+                            <input type="password" pPassword [(ngModel)]="pass0" feedback="false"
+                                   weakLabel="Débil" required="true"
+                                   strongLabel="Fuerte" #pass00="ngModel"
+                                   mediumLabel="Media" promptLabel="Contraseña"
+                                   (ngModelChange)="mouseOutPass($event)" name="pass00"/>
+                            <label>Contraseña*</label>
+                            <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                Las contraseñas no coinciden
+                            </div>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4 ui-lg-4">
+                        <span class="md-inputfield">
+                            <input type="password" pPassword [(ngModel)]="pass1" feedback="false"
+                                   weakLabel="Débil" required="true"
+                                   strongLabel="Fuerte" #pass01="ngModel"
+                                   mediumLabel="Media" promptLabel="Repita la contraseña"
+                                   (ngModelChange)="mouseOutPass($event)"
+                                   name="pass01"/>
+                            <label>Repita la contraseña*</label>
+                            <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                Las contraseñas no coinciden
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="match && cambioPasswDTO.viejaContr && cambioPasswDTO.viejaContr.trim().length > 0">
+                        <button pButton type="button" label="Guardar" style="width:140px;display: block; margin-left: auto; margin-right: auto;"
+                                icon="ui-icon-person-add" (click)="cambiarContr()" [disabled]="!cambioContrForm.valid || !match"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
