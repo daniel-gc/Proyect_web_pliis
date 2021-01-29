@@ -97,12 +97,18 @@ export class FamiliarAltaComponent implements OnInit {
     this.applicationInitService.nuevoFamiliarBeneficiario(this.nuevoMiembroArquitecturaDTO).subscribe (isSuccess => {
       console.log('Se guardo?  '+ isSuccess);
       this.blockUI.stop();
-      this.resetComponents();
-      formRegistro.reset();
-      this.messageService.add({severity: 'success', summary: 'Operación exitosa', detail: 'El familiar se creó satisfactoriamente.'});
+      if(isSuccess){
+        this.resetComponents();
+        formRegistro.reset();
+        this.messageService.add({severity: 'success', summary: 'Operación exitosa', detail: 'El familiar se creó satisfactoriamente.'});
+      }else{
+        this.messageService.add({severity: 'error', summary: 'Error',
+        detail: 'Ocurrió un error al guardar los datos del familiar.' +
+        ' Vuelva a cargar la página, si el problema persiste, contacte a su administrador'});
+      }
+      
     }, error =>{
       this.blockUI.stop();
-      this.catParentesco = [];
       this.messageService.add({severity: 'error', summary: 'Error',
               detail: 'Ocurrió un error al guardar los datos del familiar.' +
               ' Vuelva a cargar la página, si el problema persiste, contacte a su administrador'});

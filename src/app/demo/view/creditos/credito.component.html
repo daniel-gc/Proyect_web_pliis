@@ -4,50 +4,56 @@
         <div class="ui-g">
             <div class="ui-g-12">
                 <div class="card">
-                    <div class="fullscreen" *ngIf="displayVistaPrevia" >
+                    <div class="fullscreen" *ngIf="displayVistaPrevia">
                         <div class="contenidoImagen">
                             <button type="button" pripple="" class="btonCerrar" (click)="onCloseDialogoImg()">
                                 <span class="p-galleria-close-icon pi pi-times"></span>
                             </button>
                             <div class="contenedorImagen imagenFull">
-                                <img class="ng-star-inserted" style="width: 100%; display: block;"
-                                     [src]="imageObject[selectedImageIndex].image == null ? './assets/layout/images/image-not-found.svg': imageObject[selectedImageIndex].image">
+                                <img class="ng-star-inserted" style="width: 100%; display: block;" [src]="imageObject[selectedImageIndex].image == null ? './assets/layout/images/image-not-found.svg': imageObject[selectedImageIndex].image">
                             </div>
                         </div>
                     </div>
                     <h1 *ngIf="mostrarLista">Solicitudes de Crédito</h1>
                     <br *ngIf="mostrarLista">
-                    <p-table [value]="solicitudesCredito" [paginator]="true" [rows]="10" dataKey="idCredito"
-                             selectionMode="single" [(selection)]="selectedSolicitudesCredito" styleClass="ui-table-cars"
-                             [columns]="cols" [responsive]="true" *ngIf="mostrarLista" sortField="idCredito" sortOrder="sortOrder">
+                    <p-table [value]="solicitudesCredito" [paginator]="true" [rows]="10" dataKey="idCredito" selectionMode="single" [(selection)]="selectedSolicitudesCredito" styleClass="ui-table-cars" [columns]="cols" [responsive]="true" *ngIf="mostrarLista" sortField="idCredito"
+                        sortOrder="sortOrder">
                         <ng-template pTemplate="caption">
                             Listado de solicitudes de crédito
                         </ng-template>
                         <ng-template pTemplate="header" let-columns>
                             <tr>
-                                <td class="cabecera" width="9%"  pSortableColumn="idCredito">
-                                    <p class="pTextCabecera">Folio</p><p-sortIcon field="idCredito"></p-sortIcon>
+                                <td class="cabecera" width="9%" pSortableColumn="idCredito">
+                                    <p class="pTextCabecera">Folio</p>
+                                    <p-sortIcon field="idCredito"></p-sortIcon>
                                 </td>
                                 <th class="cabecera" width="15%" pSortableColumn="fechaSolicitud">
-                                    <p class="pTextCabecera">Fecha<br>solicitud</p><p-sortIcon field="fechaSolicitud"></p-sortIcon>
+                                    <p class="pTextCabecera">Fecha<br>solicitud</p>
+                                    <p-sortIcon field="fechaSolicitud"></p-sortIcon>
                                 </th>
                                 <th class="cabecera" width="24%" pSortableColumn="nombre" *ngIf="esAnalista">
-                                    <p class="pTextCabecera">Nombre<br>solicitante</p><p-sortIcon field="nombre"></p-sortIcon>
+                                    <p class="pTextCabecera">Nombre<br>solicitante</p>
+                                    <p-sortIcon field="nombre"></p-sortIcon>
                                 </th>
                                 <th class="cabecera" width="10%" pSortableColumn="empresa" *ngIf="esAnalista">
-                                    <p class="pTextCabecera">Empresa</p><p-sortIcon field="empresa"></p-sortIcon>
+                                    <p class="pTextCabecera">Empresa</p>
+                                    <p-sortIcon field="empresa"></p-sortIcon>
                                 </th>
                                 <th class="cabecera" width="14%" pSortableColumn="numeroEmpleado" *ngIf="esAnalista">
-                                    <p class="pTextCabecera">Numero</p><br>empleado<p-sortIcon field="numeroEmpleado"></p-sortIcon>
+                                    <p class="pTextCabecera">Numero</p><br>empleado
+                                    <p-sortIcon field="numeroEmpleado"></p-sortIcon>
                                 </th>
                                 <th class="cabecera" width="14%" pSortableColumn="montoCreditoDTO.monto">
-                                    <p class="pTextCabecera">Monto<br>solicitado</p><p-sortIcon field="montoCreditoDTO.monto"></p-sortIcon>
+                                    <p class="pTextCabecera">Monto<br>solicitado</p>
+                                    <p-sortIcon field="montoCreditoDTO.monto"></p-sortIcon>
                                 </th>
                                 <th class="cabecera" width="14%" pSortableColumn="estatusCreditoDTO.descripcion" *ngIf="tipoUsuario !== 'AA'">
-                                    <p class="pTextCabecera">Estatus</p><p-sortIcon field="estatusCreditoDTO.descripcion"></p-sortIcon>
+                                    <p class="pTextCabecera">Estatus</p>
+                                    <p-sortIcon field="estatusCreditoDTO.descripcion"></p-sortIcon>
                                 </th>
                                 <th class="cabecera" width="15%" pSortableColumn="fechaSolicitud" *ngIf="tipoUsuario === 'AA'">
-                                    <p class="pTextCabecera">Fecha<br>arpobación</p><p-sortIcon field="fechaConclucion"></p-sortIcon>
+                                    <p class="pTextCabecera">Fecha<br>arpobación</p>
+                                    <p-sortIcon field="fechaConclucion"></p-sortIcon>
                                 </th>
                             </tr>
                         </ng-template>
@@ -66,13 +72,11 @@
                     </p-table>
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="mostrarLista">
-                            <button pButton type="button" label="Nueva solicitud" style="width:140px; display: block; margin-left: auto; margin-right: auto;"
-                                    icon="ui-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)"
-                                    [pTooltip]="tooltipBtnNueva"
-                                    [disabled]="existeSolicitudCreditoPendiente" *ngIf="!esAnalista"></button>
+                            <button pButton type="button" label="Nueva solicitud" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)" [pTooltip]="tooltipBtnNueva" [disabled]="existeSolicitudCreditoPendiente"
+                                *ngIf="!esAnalista"></button>
                         </div>
                     </div>
-                    <h1 *ngIf="muestraDetalle">Solicitud de Crédito</h1>
+                    <h1 *ngIf="muestraDetalle">El SNAC te hace el paro</h1>
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm" *ngIf="muestraDetalle">
                         <div class="ui-g form-group" *ngIf="!esAnalista && nuevaSolicitudCreditoDTO.listaObservacionCreditoDTO.length > 0">
                             <div class="ui-g-12 ui-md-12 ui-lg-12">
@@ -311,14 +315,14 @@
                                             Archivos de solicitud
                                         </h3>
                                     </legend>
-                                    <p-table [value]="nuevaSolicitudCreditoDTO.listaArchivoCreditoDTO" [rows]="10" dataKey="pagoDTO.idPago"
-                                             selectionMode="single" styleClass="ui-table-cars" [responsive]="true" sortField="idTipoArchivo" sortOrder="1">
+                                    <p-table [value]="nuevaSolicitudCreditoDTO.listaArchivoCreditoDTO" [rows]="10" dataKey="pagoDTO.idPago" selectionMode="single" styleClass="ui-table-cars" [responsive]="true" sortField="idTipoArchivo" sortOrder="1">
                                         <ng-template pTemplate="caption">
                                             Listado de archivos de crédito
                                         </ng-template>
                                         <ng-template pTemplate="header" let-columns>
                                             <tr>
-                                                <th  width="20%" pSortableColumn="idTipoArchivo"><p-sortIcon field="idTipoArchivo"></p-sortIcon>></th>
+                                                <th width="20%" pSortableColumn="idTipoArchivo">
+                                                    <p-sortIcon field="idTipoArchivo"></p-sortIcon>></th>
                                                 <th class="cabecera" width="40%">Archivo </th>
                                                 <th class="cabecera" width="40%">Acciones</th>
                                             </tr>
@@ -326,38 +330,24 @@
                                         <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
                                             <tr>
                                                 <td class="center" width="30%">
-                                                    <img [src]="rowData.archivo == null ? './assets/layout/images/image-not-found.svg': 'data:image/jpeg;base64,' + rowData.archivo"
-                                                         style="cursor: pointer; max-width: 70px; max-height: 70px"
-                                                         id="img{{rowIndex}}" (click)="showLightbox(rowIndex)">
+                                                    <img [src]="rowData.archivo == null ? './assets/layout/images/image-not-found.svg': 'data:image/jpeg;base64,' + rowData.archivo" style="cursor: pointer; max-width: 70px; max-height: 70px" id="img{{rowIndex}}" (click)="showLightbox(rowIndex)">
                                                 </td>
                                                 <td class="center" width="30%">
                                                     {{rowData.tipoArchivoDTO.descripcion}}
                                                 </td>
                                                 <td class="center" width="40%">
-                                                    <input style="display:none"
-                                                           type="file"
-                                                           id="file{{rowIndex}}"
-                                                           name="file{{rowIndex}}"
-                                                           accept="image/.jpg, image/.png"
-                                                           (change)="onSelectFile($event)"
-                                                           #fileInput>
+                                                    <input style="display:none" type="file" id="file{{rowIndex}}" name="file{{rowIndex}}" accept="image/.jpg, image/.png" (change)="onSelectFile($event)" #fileInput>
 
                                                     <div class="ui-g-12 ui-md-4 ui-lg-4">
-                                                        <button type="button" pButton pRipple icon="ui-icon-search" class=""
-                                                                pTooltip="Seleccionar archivo" (click)="fileInput.click()"
-                                                                id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
+                                                        <button type="button" pButton pRipple icon="ui-icon-search" class="" pTooltip="Seleccionar archivo" (click)="fileInput.click()" id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                     <div class="ui-g-12 ui-md-4 ui-lg-4">
-                                                        <button type="button" pButton pRipple icon="ui-icon-backup" class=""
-                                                                pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)"
-                                                                id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
+                                                        <button type="button" pButton pRipple icon="ui-icon-backup" class="" pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)" id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                     <div class="ui-g-12 ui-md-4 ui-lg-4">
-                                                        <button type="button" pButton pRipple icon="ui-icon-delete" class=""
-                                                                pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)"
-                                                                id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
+                                                        <button type="button" pButton pRipple icon="ui-icon-delete" class="" pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)" id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                 </td>
@@ -370,21 +360,13 @@
                         <br>
                         <div class="ui-g" *ngIf="muestraDetalle">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <button pButton type="button" label="Regresar"
-                                        style="width:140px; display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
+                                <button pButton type="button" label="Regresar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <button pButton type="button" label="Guardar"
-                                        style="width:140px; display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-save" (click)="guardarSolicitudCredito()"
-                                        [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
+                                <button pButton type="button" label="Guardar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-save" (click)="guardarSolicitudCredito()" [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
                                         || bloquearGuardadoConcluida" *ngIf="!esAnalista">
                                 </button>
-                                <button pButton type="button" label="Cambiar estatus"
-                                        style="width:140px; display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-add-circle" (click)="onAbreCambiaEstatus()"
-                                        [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
+                                <button pButton type="button" label="Cambiar estatus" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-add-circle" (click)="onAbreCambiaEstatus()" [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
                                 </button>
                             </div>
                         </div>
@@ -393,8 +375,7 @@
             </div>
         </div>
     </div>
-    <p-dialog class="ventanaEmergente" header="Cambiar estatus de solicitud" [(visible)]="displayCambioEstatus" modal="true"
-              *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '30vw'}">
+    <p-dialog class="ventanaEmergente" header="Cambiar estatus de solicitud" [(visible)]="displayCambioEstatus" modal="true" *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '30vw'}">
         <form name="formaObservaciones" novalidate #formaObservaciones="ngForm">
             <div class="ui-g">
                 <div class="ui-g-12 ui-md-12 ui-lg-12" style="padding-top: 0px;">
@@ -408,9 +389,9 @@
                                     </p-dropdown>
                                     <label>Estatus de crédito</label>
                                 </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <span>
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <span>
                                     <label for="float-input">Escribe aquí tus comentarios</label>
                                     <textarea cols="30" id="float-input" pInputTextarea rows="5"
                                         class="p-inputtextarea p-inputtext p-component"
@@ -418,25 +399,22 @@
                                         placeholder="" required="true"
                                         #textAreaObserva (change)="observacion = textAreaObserva.value; validarDialogCambiaEstatus()"></textarea>
                                 </span>
-                            </div>
-                        </span>
+                    </div>
+                    </span>
+                </div>
+            </div>
+            </div>
+            <p-footer>
+                <div class="ui-g">
+                    <div class="ui-g-6 ui-md-6 ui-lg-6">
+                        <button pButton type="button" icon="pi pi-check" label="Guardar" (click)="onCloseDialogCambiaEstatus('SI')" [disabled]="!formuObservacionValido">
+                    </button>
+                    </div>
+                    <div class="ui-g-6 ui-md-6 ui-lg-6">
+                        <button pButton type="button" icon="pi pi-times" label="Cancelar" (click)="onCloseDialogCambiaEstatus('NO')"></button>
                     </div>
                 </div>
-            </div>
-        <p-footer>
-            <div class="ui-g">
-                <div class="ui-g-6 ui-md-6 ui-lg-6">
-                    <button pButton type="button" icon="pi pi-check" label="Guardar"
-                            (click)="onCloseDialogCambiaEstatus('SI')"
-                            [disabled]="!formuObservacionValido">
-                    </button>
-                </div>
-                <div class="ui-g-6 ui-md-6 ui-lg-6">
-                    <button pButton type="button" icon="pi pi-times" label="Cancelar"
-                            (click)="onCloseDialogCambiaEstatus('NO')"></button>
-                </div>
-            </div>
-        </p-footer>
+            </p-footer>
         </form>
     </p-dialog>
 </block-ui>

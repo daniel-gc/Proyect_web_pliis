@@ -141,4 +141,4 @@ export const routes: Routes = [
     // {path: '',  redirectTo: 'assets/pages/landing.html'},
 ];
 
-export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'});
+export const AppRoutes: ModuleWithProviders<any> = RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'});

@@ -11,8 +11,9 @@ const cabecera = {headers: new HttpHeaders({'Content-Type': 'application/json'})
     providedIn: 'root'
 })
 export class AuthService {
-    private authURL = 'https://pliis.mx:8443/PLIIS/auth/';
-    // private authURL = 'http://localhost:8080/PLIIS/auth/';
+    
+    private authURL = 'https://pliis.mx/PLIIS/auth/';
+    //private authURL = 'http://localhost:81/PLIIS/auth/';
     // private authURL = 'http://3.130.112.216:8080/PLIIS/auth/';
 
     constructor(private httpClient: HttpClient) { }

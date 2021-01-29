@@ -115,12 +115,18 @@ export class FamiliarModificacionComponent implements OnInit {
     this.applicationInitService.modificaFamiliaresPorUsuarioLogueado(this.familiarBeneficiarioDTO).subscribe (isSuccess => {
       console.log('Se guardo?  '+ isSuccess);
       this.blockUI.stop();
-      formRegistro.reset();
-      this.messageService.add({severity: 'success', summary: 'Operación exitosa', detail: 'El familiar se actualizo satisfactoriamente.'});
-      this.router.navigate( ['familiarBeneficiario/todos']);
+
+      if(isSuccess){
+        formRegistro.reset();
+        this.messageService.add({severity: 'success', summary: 'Operación exitosa', detail: 'El familiar se actualizo satisfactoriamente.'});
+        this.router.navigate( ['familiarBeneficiario/todos']);
+      }else{
+        this.messageService.add({severity: 'error', summary: 'Error',
+        detail: 'Ocurrió un error al actualizar los datos del familiar.' +
+        ' Vuelva a cargar la página, si el problema persiste, contacte a su administrador'});
+      }
     }, error =>{
       this.blockUI.stop();
-      this.catParentesco = [];
       this.messageService.add({severity: 'error', summary: 'Error',
               detail: 'Ocurrió un error al actualizar los datos del familiar.' +
               ' Vuelva a cargar la página, si el problema persiste, contacte a su administrador'});

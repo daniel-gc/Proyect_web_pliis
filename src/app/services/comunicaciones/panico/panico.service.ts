@@ -7,8 +7,8 @@ import {MensajeDTO} from '../../../models/generales/mensaje-dto';
 import {PanicoDTO} from '../../../models/panico/panico-dto';
 
 const uriCrearPanico = '/comunicaciones/panico/crear';
-const uriPLIIS = 'https://pliis.mx:8443/PLIIS';
-// const uriPLIIS = 'http://localhost:8080/PLIIS'; // 3.130.112.216
+const uriPLIIS = 'https://pliis.mx/PLIIS';
+//const uriPLIIS = 'http://localhost:81/PLIIS'; // 3.130.112.216
 // const uriPLIIS = 'http://3.130.112.216:8080/PLIIS';
 
 @Injectable({

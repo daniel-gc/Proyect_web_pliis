@@ -2,11 +2,11 @@
     <div class="ui-fluid">
         <p-toast></p-toast>
         <div class="ui-g">
-            <div class ="ui-g-12">
+            <div class="ui-g-12">
                 <div class="card no-margin">
-                    <h1 >Registro de usuarios PLIIS.</h1>
+                    <h1>Registro de usuarios PLIIS.</h1>
                     <form name="formaRequisitos" *ngIf="!puedeRegistrarse" #formaRequisitos="ngForm">
-                        <div class="ui-g form-group" >
+                        <div class="ui-g form-group">
                             <div class="ui-g-12 ui-lg-2"></div>
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <span class="md-inputfield">
@@ -27,8 +27,7 @@
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;" pButton
-                                label="Buscar datos" icon="ui-icon-search" (click)="onValidarRequisitos()" [disabled]="!formaRequisitos.valid"></button>
+                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;" pButton label="Buscar datos" icon="ui-icon-search" (click)="onValidarRequisitos()" [disabled]="!formaRequisitos.valid"></button>
                             </div>
                         </div>
 
@@ -89,48 +88,48 @@
                                     <label>Teléfono*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-6 ui-lg-6" >
+                            <div class="ui-g-6 ui-md-6 ui-lg-6">
                                 <span class="md-inputfield">
                                     <input id="inputEmail" type="email" pInputText name="inputEmail" [(ngModel)]="nuevoUsuarioArquitecturaDTO.email"
                                            required="true" #inputEmail="ngModel" />
                                     <label>Email*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputDireccionCalle" type="text" pInputText name="inputDireccionCalle" [(ngModel)]="nuevoUsuarioArquitecturaDTO.calle" required="true"/>
                                     <label>Calle*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputDireccionNumero" type="text" pInputText name="inputDireccionNumero" [(ngModel)]="nuevoUsuarioArquitecturaDTO.numero"
                                            required="true"/>
                                     <label>Número de domicilio*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputDireccionColonia" type="text" pInputText name="inputDireccionColonia" [(ngModel)]="nuevoUsuarioArquitecturaDTO.colonia"
                                            required="true"/>
                                     <label>Colonia*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputDireccionAlcaldia" type="text" pInputText name="inputDireccionAlcaldia" [(ngModel)]="nuevoUsuarioArquitecturaDTO.alcaldia"
                                            required="true"/>
-                                    <label>Alcaldia*</label>
+                                    <label>Alcaldía o Municipio*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputDireccionCiudad" type="text" pInputText name="inputDireccionCiudad" [(ngModel)]="nuevoUsuarioArquitecturaDTO.ciudad"
                                            required="true"/>
                                     <label>Ciudad*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputDireccionPais" type="text" pInputText name="inputDireccionPais" [(ngModel)]="nuevoUsuarioArquitecturaDTO.pais"
                                            required="true"/>
@@ -138,13 +137,13 @@
                                 </span>
                             </div>
 
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="inputRfc" required="true" [(ngModel)]="nuevoUsuarioArquitecturaDTO.rfc" #inputRfc="ngModel"/>
                                     <label>RFC*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-4 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="inputCurp" required="true" #inputCurp="ngModel" [(ngModel)]="nuevoUsuarioArquitecturaDTO.curp"/>
                                     <label>CURP*</label>
@@ -157,7 +156,7 @@
                                     <label>Nacionalidad*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-8 ui-lg-7" >
+                            <div class="ui-g-12 ui-md-8 ui-lg-7">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="inputLugarNac" required="true" [(ngModel)]="nuevoUsuarioArquitecturaDTO.lugarNacimiento"
                                             required="true" #inputLugarNac="ngModel"/>
@@ -170,7 +169,7 @@
                                     <label>Estado civil*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-8 ui-lg-4" >
+                            <div class="ui-g-12 ui-md-8 ui-lg-4">
                                 <span class="md-inputfield">
                                     <p-dropdown [options]="catalogoCentroTrabajo" [(ngModel)]="centroTrabajoSeleccionado" optionLabel="nombre"
                                                 name="centrosTrabajoDropDown" filter="true" filterBy="value.nombre"></p-dropdown>
@@ -178,25 +177,25 @@
                                     <label>Centro de trabajo*</label>
                                 </span>
                             </div>
-<!--                            <div class="ui-g-12 ui-md-6 ui-lg-4" >-->
-<!--                                <span class="md-inputfield">-->
-<!--                                    <input  type="text" pInputText name="inputDirEmpresa" required="true"/>-->
-<!--                                    <label>Dirección Empresa</label>-->
-<!--                                </span>-->
-<!--                            </div>-->
-<!--                            <div class="ui-g-12 ui-md-6 ui-lg-4" >-->
-<!--                                <span class="md-inputfield">-->
-<!--                                    <input  type="text" pInputText name="inputCentroTRabajo" />-->
-<!--                                    <label>Centro de trabajo</label>-->
-<!--                                </span>-->
-<!--                            </div>-->
-                            <div class="ui-g-12 ui-md-6 ui-lg-4" >
+                            <!--                            <div class="ui-g-12 ui-md-6 ui-lg-4" >-->
+                            <!--                                <span class="md-inputfield">-->
+                            <!--                                    <input  type="text" pInputText name="inputDirEmpresa" required="true"/>-->
+                            <!--                                    <label>Dirección Empresa</label>-->
+                            <!--                                </span>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="ui-g-12 ui-md-6 ui-lg-4" >-->
+                            <!--                                <span class="md-inputfield">-->
+                            <!--                                    <input  type="text" pInputText name="inputCentroTRabajo" />-->
+                            <!--                                    <label>Centro de trabajo</label>-->
+                            <!--                                </span>-->
+                            <!--                            </div>-->
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="inputPuesto" [(ngModel)]="nuevoUsuarioArquitecturaDTO.nombrePuestoTrabajo"/>
                                     <label>Puesto de trabajo</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-6 ui-lg-2" >
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
                                 <span class="md-inputfield">
                                     <p-calendar showButtonBar="true" dateFormat="yy-mm-dd" [locale]="es" required="true" #fechaIngreso="ngModel"
                                                 [(ngModel)]="fechaAntiguedad"
@@ -204,40 +203,40 @@
                                     <label>Fecha de ingreso a empresa*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-6 ui-lg-2" >
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
                                 <span class="md-inputfield">
                                     <p-spinner size="30" [step]="0.10" name="inputSalarioNeto" required="true" #inputSalarioNeto="ngModel"
                                                [(ngModel)]="nuevoUsuarioArquitecturaDTO.salarioMensualNeto"></p-spinner>
                                     <label>Salario mensual neto*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-6 ui-lg-2" >
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
                                 <span class="md-inputfield">
                                     <p-spinner size="30" [step]="0.10" name="inputSalarioBruto" [(ngModel)]="nuevoUsuarioArquitecturaDTO.salarioMensualBruto"></p-spinner>
                                     <label>Salario mensual bruto</label>
                                 </span>
                             </div>
-<!--                            <div class="ui-g-12 ui-md-6 ui-lg-4" >-->
-<!--                                <span class="md-inputfield">-->
-<!--                                    <input  type="text" pInputText name="nickInput"/>-->
-<!--                                    <label>Nick de usuario</label>-->
-<!--                                </span>-->
-<!--                            </div>-->
-                            <div class="ui-g-12 ui-md-6 ui-lg-4" >
+                            <!--                            <div class="ui-g-12 ui-md-6 ui-lg-4" >-->
+                            <!--                                <span class="md-inputfield">-->
+                            <!--                                    <input  type="text" pInputText name="nickInput"/>-->
+                            <!--                                    <label>Nick de usuario</label>-->
+                            <!--                                </span>-->
+                            <!--                            </div>-->
+                            <!--div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="nombreSindicatoInput" title="Si está afiliado a otro sindicato, escriba su nombre"
                                         [(ngModel)]="nuevoUsuarioArquitecturaDTO.nombreSindicato" />
                                     <label>Nombre de otro sindicato</label>
                                 </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-4" >
+                            </div-->
+                            <!-- div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <label>¿Desea afiliarse a nuestro sindicato?</label>
                                 <span class="md-inputfield">
                                     <p-inputSwitch [(ngModel)]="nuevoUsuarioArquitecturaDTO.deseaAfiliarse"
                                                    name="deseaAfiliarseSwitch"></p-inputSwitch>
                                 </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-6" >
+                            </div-->
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
                                 <span class="md-inputfield">
                                     <input type="password" pPassword [(ngModel)]="pass0" feedback= "false" weakLabel="Débil" required="true"
                                            strongLabel="Fuerte" #pass00="ngModel"
@@ -249,7 +248,7 @@
                                 </span>
 
                             </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-6" >
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
                                 <span class="md-inputfield">
                                     <input type="password" pPassword [(ngModel)]="pass1" feedback= "false" weakLabel="Débil" required="true"
                                            strongLabel="Fuerte" #pass01="ngModel"
@@ -272,24 +271,22 @@
                             <!--                                    </ng-template>-->
                             <!--                                </p-fileUpload>-->
                             <!--                            </div>-->
-<!--                            <div class="ui-g-12 ui-md-12 ui-lg-12">-->
-<!--                                <p-button  type="button" label="Borrar firma"(click)="clear()" icon="ui-icon-delete-forever">-->
-<!--                                </p-button>-->
-<!--                            </div>-->
-<!--                            <div class="ui-g-12 ui-md-12 ui-lg-12" >-->
-<!--                                Firme aquí:-->
-<!--                                <signature-pad [options]="options" (onBeginEvent)="drawBegin()" (onEndEvent)="drawComplete()"></signature-pad>-->
-<!--                            </div>-->
+                            <!--                            <div class="ui-g-12 ui-md-12 ui-lg-12">-->
+                            <!--                                <p-button  type="button" label="Borrar firma"(click)="clear()" icon="ui-icon-delete-forever">-->
+                            <!--                                </p-button>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="ui-g-12 ui-md-12 ui-lg-12" >-->
+                            <!--                                Firme aquí:-->
+                            <!--                                <signature-pad [options]="options" (onBeginEvent)="drawBegin()" (onEndEvent)="drawComplete()"></signature-pad>-->
+                            <!--                            </div>-->
                         </div>
                         <br>
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="puedeRegistrarse">
-                                <button pButton type="button" label="Guardar" style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-person-add" (click)="registrarUsuario()" [disabled]="!formaRegistro.valid || !match"></button>
+                                <button pButton type="button" label="Guardar" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-person-add" (click)="registrarUsuario()" [disabled]="!formaRegistro.valid || !match"></button>
                             </div>
-                            <div class="ui-g-12 ui-md-12 ui-lg-12" >
-                                <button pButton type="button" label="Login" style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-account-circle" routerLink="/login" ></button>
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <button pButton type="button" label="Login" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-account-circle" routerLink="/login"></button>
                             </div>
                         </div>
                     </form>
@@ -305,9 +302,7 @@
     <p-footer>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <button pButton type="button" label="Ok"
-                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                        icon="ui-icon-check" (click)="closeDialog()"></button>
+                <button pButton type="button" label="Ok" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-check" (click)="closeDialog()"></button>
             </div>
         </div>
     </p-footer>
@@ -336,8 +331,7 @@
 <!--    </p-footer>-->
 <!--</p-dialog>-->
 
-<p-dialog header="Afiliado encontrado" [(visible)]="displayDatos" modal="true" *ngIf="puedeMostrarDialogo"
-          [style]="{width: '50vw'}">
+<p-dialog header="Afiliado encontrado" [(visible)]="displayDatos" modal="true" *ngIf="puedeMostrarDialogo" [style]="{width: '50vw'}">
     <h4>Hemos encontrado este afiliado registrado.</h4>
     Nombre: {{empleadoSeleccionado.nombre}}<br>
     <form name="fechaNacPtaForm">
@@ -361,13 +355,8 @@
     <p-footer>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <button pButton type="button" label="Sí"
-                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                        icon="ui-icon-check" (click)="closeDialogDatosSiFechaOk()"></button>
+                <button pButton type="button" label="Sí" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-check" (click)="closeDialogDatosSiFechaOk()"></button>
             </div>
         </div>
     </p-footer>
 </p-dialog>
-
-
-
