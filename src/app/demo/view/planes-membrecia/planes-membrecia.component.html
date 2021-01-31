@@ -1,29 +1,28 @@
 <link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card">
-                    <div class="ui-g" *ngIf="mostrarPlanes">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+                    <div class="p-grid" *ngIf="mostrarPlanes">
+                        <div class="p-col-12 p-md-12 p-lg-12 p-xl-12">
                             <h1>Planes de membrecía</h1>
                         </div>
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 ui-xl-4" *ngFor="let plan of catalogoPlan">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-contenedor">
-                                <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-cabecera"
-                                    style="background-color: {{plan.listaColorPlanDTO[0].colorHex}}; background-image: linear-gradient(180deg, {{plan.listaColorPlanDTO[0].colorHex}} 0%, {{plan.listaColorPlanDTO[1].colorHex}} 20%, {{plan.listaColorPlanDTO[2].colorHex}} 100%);">
+                        <div class="p-col-4 p-md-4 p-lg-4 p-xl-4" *ngFor="let plan of catalogoPlan">
+                            <div class="p-col-12 p-md-12 p-lg-12 p-xl-12 plan-contenedor">
+                                <div class="p-col-12 p-md-12 p-lg-12 p-xl-12 plan-cabecera" style="background-color: {{plan.listaColorPlanDTO[0].colorHex}}; background-image: linear-gradient(180deg, {{plan.listaColorPlanDTO[0].colorHex}} 0%, {{plan.listaColorPlanDTO[1].colorHex}} 20%, {{plan.listaColorPlanDTO[2].colorHex}} 100%);">
                                     <div class="plan-nombre">{{plan.nombre}}</div>
                                     <div class="plan-detalle">
-                                        <div class="ui-g-8 ui-md-8 ui-lg-8 ui-xl-8 plan-monto">
+                                        <div class="p-col-8 p-md-8 p-lg-8 p-xl-8 plan-monto">
                                             ${{plan.monto}}
                                         </div>
-                                        <div class="ui-g-4 ui-md-4 ui-lg-4 ui-xl-4 plan-contenedor-cent-mon">
-                                            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-centavos">
+                                        <div class="p-col-4 p-md-4 p-lg-4 p-xl-4 plan-contenedor-cent-mon">
+                                            <div class="p-col-12 p-md-12 p-lg-12 p-xl-12 plan-centavos">
                                                 00
                                             </div>
-                                            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-moneda">
+                                            <div class="p-col-12 p-md-12 p-lg-12 p-xl-12 plan-moneda">
                                                 {{plan.moneda}}
                                             </div>
                                         </div>
@@ -32,18 +31,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12 plan-desc">
+                                <div class="p-col-12 p-md-12 p-lg-12 p-xl-12 plan-desc">
                                     <p class="">{{plan.descripcion}}</p>
-                                    <button class="button" (click)="onSelectPlan(plan)"
-                                        style="color:{{plan.listaColorPlanDTO[0].colorHex}};">
+                                    <button class="button" (click)="onSelectPlan(plan)" style="color:{{plan.listaColorPlanDTO[0].colorHex}};">
                                         Seleccionar
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui-g" *ngIf="mostrarFormTarjeta">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+                    <div class="p-grid" *ngIf="mostrarFormTarjeta">
+                        <div class="p-col-12 p-md-12 p-lg-12 p-xl-12">
                             <h1>Información de tarjeta</h1>
                         </div>
                         <div class="tContenedor">
@@ -101,8 +99,8 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <p class="tLeyenda">  </p>
-                                    <a href="#" class="tLink-banco">  </a>
+                                    <p class="tLeyenda"> </p>
+                                    <a href="#" class="tLink-banco"> </a>
                                 </div>
                             </section>
                             <div class="tContenedor-btn">
@@ -110,39 +108,30 @@
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
-        <!--                    #formTarjeta="ngForm"-->
-                            <div id="tFormulario-tarjeta" class="tFormulario-tarjeta"
-                                [ngClass]="{'active': mostrarFormularioT}">
+                            <!--                    #formTarjeta="ngForm"-->
+                            <div id="tFormulario-tarjeta" class="tFormulario-tarjeta" [ngClass]="{'active': mostrarFormularioT}">
                                 <div class="tGrupo">
                                     <label for="inputNumero">Número Tarjeta*</label>
-                                    <input type="text" id="inputNumero" maxlength="19" required="true"
-                                        autocomplete="off" [(ngModel)]="datosTarjeta.numeroTarjeta"
-                                        (keyup)="validarNumTarjeta()">
-        <!--                                   formControlName="inputNumero">-->
+                                    <input type="text" id="inputNumero" maxlength="19" required="true" autocomplete="off" [(ngModel)]="datosTarjeta.numeroTarjeta" (keyup)="validarNumTarjeta()">
+                                    <!--                                   formControlName="inputNumero">-->
                                 </div>
                                 <div class="tGrupo">
                                     <label for="inputNombre">Nombre Tarjeta*</label>
-                                    <input type="text" id="inputNombre" maxlength="30" required="true"
-                                        autocomplete="off" [(ngModel)]="datosTarjeta.nombreTarjeta"
-                                        (keyup)="validarNombre()">
+                                    <input type="text" id="inputNombre" maxlength="30" required="true" autocomplete="off" [(ngModel)]="datosTarjeta.nombreTarjeta" (keyup)="validarNombre()">
                                 </div>
                                 <div class="tFlexbox">
                                     <div class="tGrupo tExpira">
                                         <label for="tSelectMes">Válida hasta</label>
                                         <div class="tFlexbox">
                                             <div class="tGrupo-select">
-                                                <select name="tMes" id="tSelectMes"
-                                                        [(ngModel)]="mesSeleccionado" required="true"
-                                                        (change)="validaMesAnio('mes', mesSeleccionado)">
+                                                <select name="tMes" id="tSelectMes" [(ngModel)]="mesSeleccionado" required="true" (change)="validaMesAnio('mes', mesSeleccionado)">
                                                     <option value="-1" disabled selected>Mes*</option>
                                                     <option [value]="mes.idMes" *ngFor="let mes of mesesTarjeta">{{mes.nombre}}</option>
                                                 </select>
                                                 <i class="fas fa-angle-down"></i>
                                             </div>
                                             <div class="tGrupo-select">
-                                                <select name="tAnio" id="tSelectAnio"
-                                                        [(ngModel)]="anioSeleccionado" required="true"
-                                                        (change)="validaMesAnio('anio', anioSeleccionado)">
+                                                <select name="tAnio" id="tSelectAnio" [(ngModel)]="anioSeleccionado" required="true" (change)="validaMesAnio('anio', anioSeleccionado)">
                                                     <option value="-1" disabled selected>Año*</option>
                                                     <option [value]="anio" *ngFor="let anio of aniosTarjeta">{{anio}}</option>
                                                 </select>
@@ -152,9 +141,7 @@
                                     </div>
                                     <div class="tGrupo tCcv">
                                         <label for="tInputCCV">CCV*</label>
-                                        <input type="text" id="tInputCCV" maxlength="5"
-                                            [(ngModel)]="datosTarjeta.ccv" required="true"
-                                            (keyup)="validarCcv()">
+                                        <input type="text" id="tInputCCV" maxlength="5" [(ngModel)]="datosTarjeta.ccv" required="true" (keyup)="validarCcv()">
                                     </div>
                                 </div>
 
@@ -170,8 +157,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui-g" *ngIf="mostrarConfirmaPago">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+                    <div class="p-grid" *ngIf="mostrarConfirmaPago">
+                        <div class="p-col-12 p-md-12 p-lg-12 p-xl-12">
                             <h1>Confirma los datos</h1>
                         </div>
                         <div class="confContenedor">
@@ -223,7 +210,8 @@
                                 <div class="confGrupo">
                                     <p class="confLabel">Código de Seguridad:</p>
                                     <p class="confDato confTarjetaCcv">
-                                        ****<!--{{datosTarjeta.ccv}}-->
+                                        ****
+                                        <!--{{datosTarjeta.ccv}}-->
                                     </p>
                                 </div>
                             </div>
@@ -235,27 +223,22 @@
                                             <input type="checkbox" [(ngModel)]="checkAceptaTerminos"
                                             [disabled]="!mostrarBotonPago">
                                             <span class="checkmark"></span>
-                                        </label>
+                                    </label>
                                     </span>
                                 </div>
                                 <div class="confGrupoBtn">
-                                    <button type="button" class="btnRegresar "
-                                            (click)="onRegresaModificaDatos()"
-                                            *ngIf="mostrarBotonPago">
+                                    <button type="button" class="btnRegresar " (click)="onRegresaModificaDatos()" *ngIf="mostrarBotonPago">
                                         Modificar los datos
                                     </button>
-                                    <button type="submit" class="tBtnProcederPago"
-                                            (click)="onRealizaPago()"
-                                            [disabled]="!checkAceptaTerminos"
-                                            *ngIf="mostrarBotonPago" >
+                                    <button type="submit" class="tBtnProcederPago" (click)="onRealizaPago()" [disabled]="!checkAceptaTerminos" *ngIf="mostrarBotonPago">
                                         Realizar pago
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui-g">
-                        <div class="ui-g-12">
+                    <div class="p-grid">
+                        <div class="p-col-12">
                             <a routerLink="/" pTooltip="Regresar">
                                 <i class="material-icons">home</i>
                             </a>
@@ -272,20 +255,18 @@
             <button type="button" pButton icon="pi pi-check" label="Salir" (click)="cd.accept()" *ngIf="!mostrarBotonSiNo"></button>
         </p-footer>
     </p-confirmDialog>
-    <p-dialog class="ventanaEmergente" header="Terminos y condiciones" [(visible)]="displayTerminosCondiciones" modal="true"
-              *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '50vw'}">
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-12 ui-lg-12">
+    <p-dialog class="ventanaEmergente" header="Terminos y condiciones" [(visible)]="displayTerminosCondiciones" modal="true" *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '50vw'}">
+        <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12">
                 <p>PLIIS no recibe directamente del cliente el pago por servicios o productos.</p>
-                <p>Para formalizar su compra, utilizamos OpenPay ®, por lo cual las condiciones contractuales,
-                    transaccionales y de seguridad informática deberá consultarlas y apegarse a las mismas, en:
+                <p>Para formalizar su compra, utilizamos OpenPay ®, por lo cual las condiciones contractuales, transaccionales y de seguridad informática deberá consultarlas y apegarse a las mismas, en:
                     <strong><a class="openOpenpay" (click)="onClickOpenOpenpay()">https://www.openpay.mx/en/terminos-servicio.html</a></strong>
                 </p>
             </div>
         </div>
         <p-footer>
-            <div class="ui-g">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-12">
                     <button pButton type="button" icon="pi pi-check" label="Sí" (click)="onCloseDialogTerminosCondiciones('SI')"></button>
                     <button pButton type="button" icon="pi pi-times" label="No" (click)="onCloseDialogTerminosCondiciones('NO')"></button>
                 </div>
@@ -293,4 +274,3 @@
         </p-footer>
     </p-dialog>
 </block-ui>
-

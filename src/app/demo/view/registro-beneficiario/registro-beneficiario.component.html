@@ -1,14 +1,14 @@
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card no-margin">
                     <h1>Registro de familiares. PLIIS.</h1>
                     <form name="formaRequisitos" *ngIf="!puedeRegistrarse" #formaRequisitos="ngForm">
-                        <div class="ui-g form-group">
-                            <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4">
+                        <div class="p-grid form-group">
+                            <div class="p-col-12 p-md-4 p-lg-4"></div>
+                            <div class="p-col-12 p-md-4 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputIdAfiliado" type="number" pInputText
                                            [(ngModel)]="idAfiliadoSeleccionado" name="inputIdAfiliado"
@@ -17,22 +17,19 @@
                                     <label>Escriba el número de afiliado</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+                            <div class="p-col-12 p-md-4 p-lg-4"></div>
                         </div>
 
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                        pButton
-                                        label="Buscar datos" icon="ui-icon-search" (click)="onValidarRequisitos()"
-                                        [disabled]="!formaRequisitos.valid"></button>
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-12 p-lg-12">
+                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;" pButton label="Buscar datos" icon="p-icon-search" (click)="onValidarRequisitos()" [disabled]="!formaRequisitos.valid"></button>
                             </div>
                         </div>
 
                     </form>
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                        <div class="ui-g form-group" *ngIf="puedeRegistrarse">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <div class="p-grid form-group" *ngIf="puedeRegistrarse">
+                            <div class="p-col-12 p-md-6 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputNombre" type="text" pInputText name="nombreInput"
                                            #nombreInput="ngModel" required="true"
@@ -40,7 +37,7 @@
                                     <label>Nombre(s)*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput"
                                            #apPaternoInput="ngModel" required="true"
@@ -48,14 +45,14 @@
                                     <label>Apellido Paterno*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
                                            [(ngModel)]="nuevoFamiliar.apellidoMaterno"/>
                                     <label>Apellido materno</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-4 ui-lg-2">
+                            <div class="p-col-6 p-md-4 p-lg-2">
                                 <span class="md-inputfield">
                                     <p-calendar showButtonBar="true" dateFormat="yy-mm-dd" [locale]="es"
                                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019"
@@ -65,14 +62,14 @@
                                     <label>Fecha de nacimiento*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-4 ui-lg-2">
+                            <div class="p-col-6 p-md-4 p-lg-2">
                                 <span class="md-inputfield">
                                     <p-dropdown [options]="sexos" [(ngModel)]="sexoSeleccionado" optionLabel="nombre"
                                                 name="sexoDropDown"></p-dropdown>
                                     <label>Sexo*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-4 ui-lg-2">
+                            <div class="p-col-6 p-md-4 p-lg-2">
                                 <span class="md-inputfield">
                                     <p-inputMask mask="(99)99999999" [(ngModel)]="nuevoFamiliar.telefono"
                                                  #telefMask="ngModel"
@@ -80,7 +77,7 @@
                                     <label>Teléfono*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6 ui-md-6 ui-lg-6">
+                            <div class="p-col-6 p-md-6 p-lg-6">
                                 <span class="md-inputfield">
                                     <input id="inputEmail" type="email" pInputText name="inputEmail"
                                            [(ngModel)]="nuevoFamiliar.email"
@@ -89,14 +86,14 @@
                                 </span>
                             </div>
 
-                            <div class="ui-g-6 ui-md-4 ui-lg-4">
+                            <div class="p-col-6 p-md-4 p-lg-4">
                                 <span class="md-inputfield">
                                     <p-dropdown [options]="catalogoRelacionesFamiliares" [(ngModel)]="relacionFamiliarSeleccionada"
                                                 name="relacionesFamiliaresDropDown" optionLabel="nombre"></p-dropdown>
                                     <label>Relación familiar*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4">
+                            <div class="p-col-12 p-md-4 p-lg-4">
                                 <span class="md-inputfield">
                                     <input type="password" pPassword [(ngModel)]="pass0" feedback="false"
                                            weakLabel="Débil" required="true"
@@ -104,13 +101,13 @@
                                            mediumLabel="Media" promptLabel="Contraseña"
                                            (ngModelChange)="mouseOutPass($event)" name="pass00"/>
                                     <label>Contraseña*</label>
-                                    <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                    <div *ngIf="!match" class="p-message p-messages-error p-corner-all">
                                         Las contraseñas no coinciden
                                     </div>
                                 </span>
 
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4">
+                            <div class="p-col-12 p-md-4 p-lg-4">
                                 <span class="md-inputfield">
                                     <input type="password" pPassword [(ngModel)]="pass1" feedback="false"
                                            weakLabel="Débil" required="true"
@@ -119,24 +116,19 @@
                                            (ngModelChange)="mouseOutPass($event)"
                                            name="pass01"/>
                                     <label>Repita la contraseña*</label>
-                                    <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                    <div *ngIf="!match" class="p-message p-messages-error p-corner-all">
                                         Las contraseñas no coinciden
                                     </div>
                                 </span>
                             </div>
                         </div>
                         <br>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="puedeRegistrarse">
-                                <button pButton type="button" label="Guardar"
-                                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-person-add" (click)="registrarUsuario()"
-                                        [disabled]="!formaRegistro.valid || !match"></button>
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-12 p-lg-12" *ngIf="puedeRegistrarse">
+                                <button pButton type="button" label="Guardar" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-person-add" (click)="registrarUsuario()" [disabled]="!formaRegistro.valid || !match"></button>
                             </div>
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <button pButton type="button" label="Login"
-                                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                        icon="ui-icon-account-circle" routerLink="/login"></button>
+                            <div class="p-col-12 p-md-12 p-lg-12">
+                                <button pButton type="button" label="Login" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-account-circle" routerLink="/login"></button>
                             </div>
                         </div>
                     </form>
@@ -150,25 +142,22 @@
 <p-dialog header="Operación exitosa" [(visible)]="display" modal="true">
     Nuevo usuario creado.
     <p-footer>
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <button pButton type="button" label="Ok"
-                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                        icon="ui-icon-check" (click)="closeDialog()"></button>
+        <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12">
+                <button pButton type="button" label="Ok" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-check" (click)="closeDialog()"></button>
             </div>
         </div>
     </p-footer>
 </p-dialog>
 
-<p-dialog header="Afiliado encontrado" [(visible)]="displayDatos" modal="true" *ngIf="puedeMostrarDialogo"
-          [style]="{width: '50vw'}">
+<p-dialog header="Afiliado encontrado" [(visible)]="displayDatos" modal="true" *ngIf="puedeMostrarDialogo" [style]="{width: '50vw'}">
     <h4>Hemos encontrado este afiliado registrado.</h4>
     Nombre: {{afiliadoSeleccionado.nombres}}<br>
     <form name="fechaNacPtaForm">
-        <div class="ui-g">
+        <div class="p-grid">
             <h4>Introduzca por favor la fecha de nacimiento del afiliado encontrado.</h4>
-            <div class="ui-g-12 ui-md-3 ui-lg-3"></div>
-            <div class="ui-g-12 ui-md-6 ui-lg-6">
+            <div class="p-col-12 p-md-3 p-lg-3"></div>
+            <div class="p-col-12 p-md-6 p-lg-6">
                 <span class="md-inputfield">
                         <p-calendar showButtonBar="true" dateFormat="yy-mm-dd" [locale]="es"
                                     [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019"
@@ -179,19 +168,14 @@
                         <label>Fecha de nacimiento*</label>
                 </span>
             </div>
-            <div class="ui-g-12 ui-md-3 ui-lg-3"></div>
+            <div class="p-col-12 p-md-3 p-lg-3"></div>
         </div>
     </form>
     <p-footer>
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <button pButton type="button" label="Sí"
-                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                        icon="ui-icon-check" (click)="closeDialogDatosSi()"></button>
+        <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12">
+                <button pButton type="button" label="Sí" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-check" (click)="closeDialogDatosSi()"></button>
             </div>
         </div>
     </p-footer>
 </p-dialog>
-
-
-

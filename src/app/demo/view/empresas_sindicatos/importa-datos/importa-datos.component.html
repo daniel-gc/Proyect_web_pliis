@@ -1,20 +1,20 @@
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card">
                     <h1>Importación de datos a la plataforma PLIIS.</h1>
-                    <div class="ui-g">
-                        <div class="ui-g-4"></div>
-                        <div class="ui-g-4">
+                    <div class="p-grid">
+                        <div class="p-col-4"></div>
+                        <div class="p-col-4">
                             <button pButton label="Importar" (click)="importaDatos()"></button>
                         </div>
-                        <div class="ui-g-4"></div>
+                        <div class="p-col-4"></div>
                     </div>
-                    <div class="ui-g" *ngIf="listaLog.length > 0">
-                        <div class="ui-g-12">
-                            <p-table #dt [columns]="cols" [value]="listaLog" [responsive]="true" [paginator]="true" [rows]="10" dataKey="idLogImportacion" styleClass="ui-table-cars" >
+                    <div class="p-grid" *ngIf="listaLog.length > 0">
+                        <div class="p-col-12">
+                            <p-table #dt [columns]="cols" [value]="listaLog" [responsive]="true" [paginator]="true" [rows]="10" dataKey="idLogImportacion" styleClass="ui-table-cars">
                                 <ng-template pTemplate="caption">
                                     Resultados de la importación
                                     <div class="ui-table-globalfilter-container">
@@ -46,5 +46,3 @@
         </div>
     </div>
 </block-ui>
-
-

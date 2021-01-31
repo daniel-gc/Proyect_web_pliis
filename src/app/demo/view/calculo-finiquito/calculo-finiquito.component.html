@@ -1,14 +1,14 @@
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card no-margin">
                     <h1>Calculo Finiquito</h1>
                     <form name="formaCalculo" #formaCalculo="ngForm">
-                        <div class="ui-g form-group" >
-                            <div class ="ui-g-12 ui-md-6 ui-lg-6 ui-xl-12">
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                        <div class="p-grid form-group">
+                            <div class="p-col-12 p-md-6 p-lg-6 p-xl-12">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <span class="md-inputfield span_input">
                                         <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                     [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2020" name="fechaIngreso"
@@ -16,7 +16,7 @@
                                         <label>Fecha de ingreso*</label>
                                     </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <span class="md-inputfield span_input">
                                         <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                     [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2020" name="fechaEgreso"
@@ -24,57 +24,55 @@
                                         <label>Fecha de egreso*</label>
                                     </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <span class="md-inputfield span_input">
                                         <p-spinner size="10" [step]="1" name="salarioMensualActual" required="true"
                                                    [(ngModel)]="finiquitoCalculoDTO.salarioMensualActual"></p-spinner>
                                         <label>Salario mensual</label>
                                     </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <span class="md-inputfield span_input">
                                         <p-spinner size="2" [step]="1" name="diasAguinaldo" required="true"
                                                    [(ngModel)]="finiquitoCalculoDTO.diasAguinaldo"></p-spinner>
                                         <label>Días de aguinaldo</label>
                                     </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <span class="md-inputfield span_input">
                                         <p-spinner size="2" [step]="1" name="diasVacacionesAnio" required="true"
                                                    [(ngModel)]="finiquitoCalculoDTO.diasVacacionesAnio"></p-spinner>
                                         <label>Días de vacaciones al año</label>
                                     </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <span class="md-inputfield span_input">
                                         <p-spinner size="2" [step]="1" name="diasVacacionesPendientes" required="true"
                                                   [(ngModel)]="finiquitoCalculoDTO.diasVacacionesPendientes"></p-spinner>
                                         <label>Días de vacaciones pendientes</label>
                                     </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                    <button pButton label="Calcular" icon="ui-icon-search"
-                                            style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                            (click)="onCalcularFiniquito()" [disabled]="!formaCalculo.valid">
+                                <div class="p-col-12 p-md-12 p-lg-12">
+                                    <button pButton label="Calcular" icon="p-icon-search" style="width:140px;display: block; margin-left: auto; margin-right: auto;" (click)="onCalcularFiniquito()" [disabled]="!formaCalculo.valid">
                                     </button>
                                 </div>
                             </div>
-                            <div class ="ui-g-12 ui-md-6 ui-lg-6 ui-xl-12" *ngIf="mostrarFiniquitoDetalle">
+                            <div class="p-col-12 p-md-6 p-lg-6 p-xl-12" *ngIf="mostrarFiniquitoDetalle">
                                 <h3>Resultado</h3>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <p><strong>Liquidado: $</strong>{{finiquitoDetalleDTO.liquidado | number:".2-2"}}</p>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <p><strong>Finiquito: $</strong>{{finiquitoDetalleDTO.finiquito | number:".2-2"}}</p>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-offset-2 ui-lg-8">
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
                                     <p><strong>Total: $</strong>{{finiquitoDetalleDTO.total | number:".2-2"}}</p>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <div class="ui-g">
-                        <div class="ui-g-12">
+                    <div class="p-grid">
+                        <div class="p-col-12">
                             <a routerLink="/" pTooltip="Regresar">
                                 <i class="material-icons">home</i>
                             </a>

@@ -1,35 +1,35 @@
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card no-margin">
                     <h1>Modificación de datos de familiar.</h1>
 
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                        <div class="ui-g form-group">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <div class="p-g form-group">
+                            <div class="p-col-12 p-md-6 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputNombre" type="text" pInputText name="nombreInput" #nombreInput="ngModel" required="true"
                                            [(ngModel)]="familiarBeneficiarioDTO.nombres"/>
                                     <label>Nombre(s)*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput" #apPaternoInput="ngModel" required="true"
                                         [(ngModel)]="familiarBeneficiarioDTO.apPaterno"/>
                                     <label>Apellido Paterno*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
                                         [(ngModel)]="familiarBeneficiarioDTO.apMaterno"/>
                                     <label>Apellido materno</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019" name="fechaNac"
@@ -37,35 +37,35 @@
                                     <label>Fecha de nacimiento*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <p-dropdown [options]="sexos" [(ngModel)]="sexoSeleccionado" optionLabel="nombre"
                                                 name="sexoDropDown"></p-dropdown>
                                     <label>Sexo*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <p-dropdown [options]="catParentesco" [(ngModel)]="parentescoSeleccionado" optionLabel="nombre"
                                                 name="parentescoDropDown"></p-dropdown>
                                     <label>Parentesco*</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <p-inputMask mask="(99)99999999" [(ngModel)]="familiarBeneficiarioDTO.telefono" placeholder="" #telefMask="ngModel"
                                                  required="false" size="30" name="telefMask" ></p-inputMask>
                                     <label>Teléfono</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputEmail" type="email" pInputText name="inputEmail" [(ngModel)]="familiarBeneficiarioDTO.email"
                                            required="false" #inputEmail="ngModel" />
                                     <label>Email</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-3 ui-lg-4">
+                            <div class="p-col-12 p-md-3 p-lg-4">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="inputCurp" required="false" #inputCurp="ngModel" [(ngModel)]="familiarBeneficiarioDTO.curp"/>
                                     <label>CURP</label>
@@ -73,9 +73,9 @@
                             </div>
                         </div>
                         <br>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <button pButton type="button" label="Guardar" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-person-add" (click)="actualizaDatos(formaRegistro)" [disabled]="!formaRegistro.valid"></button>
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-12 p-lg-12">
+                                <button pButton type="button" label="Guardar" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-person-add" (click)="actualizaDatos(formaRegistro)" [disabled]="!formaRegistro.valid"></button>
                             </div>
                         </div>
                     </form>
@@ -89,9 +89,9 @@
 <p-dialog header="Operación exitosa" [(visible)]="display" modal="true">
     Nuevo usuario creado.
     <p-footer>
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <button pButton type="button" label="Ok" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-check" (click)="closeDialog()"></button>
+        <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12">
+                <button pButton type="button" label="Ok" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-check" (click)="closeDialog()"></button>
             </div>
         </div>
     </p-footer>

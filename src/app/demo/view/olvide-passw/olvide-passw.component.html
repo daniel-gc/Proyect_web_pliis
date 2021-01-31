@@ -1,14 +1,14 @@
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card no-margin">
                     <h1>Recuperación de contraseña. PLIIS.</h1>
                     <form name="formaRequisitos" *ngIf="!tokenSolicicitado" #formaRequisitos="ngForm" novalidate>
-                        <div class="ui-g form-group">
-                            <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4">
+                        <div class="p-grid form-group">
+                            <div class="p-col-12 p-md-4 p-lg-4"></div>
+                            <div class="p-col-12 p-md-4 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputEmailAfiliado" type="email" pInputText #inputEmailAfiliado="ngModel"
                                            [(ngModel)]="emailAfiliado" name="inputEmailAfiliado"
@@ -17,44 +17,42 @@
                                     <label for="inputEmailAfiliado">Escriba su correo electrónico</label>
                                 </span>
                             </div>
-                            <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+                            <div class="p-col-12 p-md-4 p-lg-4"></div>
                         </div>
 
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                        pButton label="Generar token" icon="ui-icon-build" (click)="onGenerarToken()"
-                                        [disabled]="!emailValido() || !formaRequisitos.valid"></button>
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-12 p-lg-12">
+                                <button style="width:140px;display: block; margin-left: auto; margin-right: auto;" pButton label="Generar token" icon="p-icon-build" (click)="onGenerarToken()" [disabled]="!emailValido() || !formaRequisitos.valid"></button>
                             </div>
                         </div>
 
                     </form>
                     <div *ngIf="tokenSolicicitado">
                         <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                            <div class="ui-g form-group" *ngIf="tokenSolicicitado">
-                                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <span class="md-inputfield">
+                            <div class="p-grid form-group" *ngIf="tokenSolicicitado">
+                                <div class="p-col-12 p-md-12 p-lg-12">
+                                    <span class="md-inputfield">
                                     <textarea pInputTextarea id="inputToken" [rows]="3" [cols]="30"  name="inputToken"
                                            #inputToken="ngModel" required autoResize="autoResize"
                                            [(ngModel)]="token" placeholder="Token"></textarea>
                                 </span>
                                 </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-6">
-                                <span class="md-inputfield">
+                                <div class="p-col-12 p-md-6 p-lg-6">
+                                    <span class="md-inputfield">
                                     <input type="password" pPassword [(ngModel)]="pass0" feedback="false"
                                            weakLabel="Débil" required
                                            strongLabel="Fuerte" #pass00="ngModel"
                                            mediumLabel="Media" promptLabel="Contraseña"
                                            (ngModelChange)="mouseOutPass($event)" name="pass00"/>
                                     <label>Contraseña*</label>
-                                    <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                    <div *ngIf="!match" class="p-message p-messages-error p-corner-all">
                                         Las contraseñas no coinciden
                                     </div>
                                 </span>
 
                                 </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-6">
-                                <span class="md-inputfield">
+                                <div class="p-col-12 p-md-6 p-lg-6">
+                                    <span class="md-inputfield">
                                     <input type="password" pPassword [(ngModel)]="pass1" feedback="false"
                                            weakLabel="Débil" required
                                            strongLabel="Fuerte" #pass01="ngModel"
@@ -62,22 +60,18 @@
                                            (ngModelChange)="mouseOutPass($event)"
                                            name="pass01"/>
                                     <label>Repita la contraseña*</label>
-                                    <div *ngIf="!match" class="ui-message ui-messages-error ui-corner-all">
+                                    <div *ngIf="!match" class="p-message p-messages-error p-corner-all">
                                         Las contraseñas no coinciden
                                     </div>
                                 </span>
                                 </div>
                             </div>
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                    <button style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                            pButton label="Cambiar contraseña" icon="ui-icon-autorenew" (click)="cambiaPassw()"
-                                            [disabled]="!formaRegistro.valid"></button>
+                            <div class="p-grid">
+                                <div class="p-col-12 p-md-12 p-lg-12">
+                                    <button style="width:140px;display: block; margin-left: auto; margin-right: auto;" pButton label="Cambiar contraseña" icon="p-icon-autorenew" (click)="cambiaPassw()" [disabled]="!formaRegistro.valid"></button>
                                 </div>
-                                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                    <button pButton type="button" label="Login"
-                                            style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                                            icon="ui-icon-account-circle" routerLink="/login"></button>
+                                <div class="p-col-12 p-md-12 p-lg-12">
+                                    <button pButton type="button" label="Login" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-account-circle" routerLink="/login"></button>
                                 </div>
                             </div>
                         </form>
@@ -93,16 +87,10 @@
 <p-dialog header="Operación exitosa" [(visible)]="display" modal="true">
     Nuevo usuario creado.
     <p-footer>
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <button pButton type="button" label="Ok"
-                        style="width:140px;display: block; margin-left: auto; margin-right: auto;"
-                        icon="ui-icon-check" (click)="closeDialog()"></button>
+        <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12">
+                <button pButton type="button" label="Ok" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-check" (click)="closeDialog()"></button>
             </div>
         </div>
     </p-footer>
 </p-dialog>
-
-
-
-

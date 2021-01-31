@@ -1,8 +1,8 @@
 <block-ui>
-    <div class="ui-fluid">
+    <div class="layout-container">
         <p-toast></p-toast>
-        <div class="ui-g">
-            <div class="ui-g-12">
+        <div class="p-grid">
+            <div class="p-col-12">
                 <div class="card">
                     <div class="fullscreen" *ngIf="displayVistaPrevia">
                         <div class="contenidoImagen">
@@ -16,7 +16,7 @@
                     </div>
                     <h1 *ngIf="mostrarLista">Solicitudes de Crédito</h1>
                     <br *ngIf="mostrarLista">
-                    <p-table [value]="solicitudesCredito" [paginator]="true" [rows]="10" dataKey="idCredito" selectionMode="single" [(selection)]="selectedSolicitudesCredito" styleClass="ui-table-cars" [columns]="cols" [responsive]="true" *ngIf="mostrarLista" sortField="idCredito"
+                    <p-table [value]="solicitudesCredito" [paginator]="true" [rows]="10" dataKey="idCredito" selectionMode="single" [(selection)]="selectedSolicitudesCredito" styleClass="p-table-cars" [columns]="cols" [responsive]="true" *ngIf="mostrarLista" sortField="idCredito"
                         sortOrder="sortOrder">
                         <ng-template pTemplate="caption">
                             Listado de solicitudes de crédito
@@ -70,23 +70,23 @@
                             </tr>
                         </ng-template>
                     </p-table>
-                    <div class="ui-g">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="mostrarLista">
-                            <button pButton type="button" label="Nueva solicitud" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)" [pTooltip]="tooltipBtnNueva" [disabled]="existeSolicitudCreditoPendiente"
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-12 p-lg-12" *ngIf="mostrarLista">
+                            <button pButton type="button" label="Nueva solicitud" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)" [pTooltip]="tooltipBtnNueva" [disabled]="existeSolicitudCreditoPendiente"
                                 *ngIf="!esAnalista"></button>
                         </div>
                     </div>
                     <h1 *ngIf="muestraDetalle">El SNAC te hace el paro</h1>
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm" *ngIf="muestraDetalle">
-                        <div class="ui-g form-group" *ngIf="!esAnalista && nuevaSolicitudCreditoDTO.listaObservacionCreditoDTO.length > 0">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <div class="p-grid form-group" *ngIf="!esAnalista && nuevaSolicitudCreditoDTO.listaObservacionCreditoDTO.length > 0">
+                            <div class="p-col-12 p-md-12 p-lg-12">
                                 <fieldset>
                                     <legend>
                                         <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
                                             Estatus Solicitud: {{nuevaSolicitudCreditoDTO.estatusCreditoDTO.descripcion}}
                                         </h3>
                                     </legend>
-                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <div class="p-col-12 p-md-12 p-lg-12">
                                         <span>
                                             {{nuevaSolicitudCreditoDTO.listaObservacionCreditoDTO[0].observacion}}
                                         </span>
@@ -94,16 +94,16 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <div class="ui-g form-group">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12" disabled="true">
+                        <div class="p-grid form-group">
+                            <div class="p-col-12 p-md-12 p-lg-12" disabled="true">
                                 <fieldset>
                                     <legend>
                                         <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
                                             Datos generales del solicitante
                                         </h3>
                                     </legend>
-                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputNombre" type="text" pInputText name="nombreInput" #nombreInput="ngModel" required="true"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.nombre"
@@ -111,7 +111,7 @@
                                                 <label>Nombre(s)*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput" #apPaternoInput="ngModel" required="true"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.apellidoPaterno"
@@ -119,7 +119,7 @@
                                                 <label>Apellido Paterno*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.apellidoMaterno"
@@ -128,8 +128,8 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                             [monthNavigator]="true" [yearNavigator]="true"
@@ -139,7 +139,7 @@
                                                 <label>Fecha de nacimiento*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
     <!--                                            <p-inputMask mask="(99)99999999" [(ngModel)]="nuevaSolicitudCreditoDTO.telefono"-->
     <!--                                                         pInputText="{{nuevaSolicitudCreditoDTO.telefono}}" #telefMask="ngModel"-->
@@ -155,7 +155,7 @@
                                                 <span *ngIf="!nuevaSolicitudCreditoDTO.telefonoAfilNoValido" style="color: #b00000;">El telefono no es válido.</span>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputEmail" type="email" pInputText name="inputEmail"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.email" (change)="esEmailValido('correoAfil', 0)"
@@ -166,8 +166,8 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <input  type="text" pInputText name="inputEmpresa"
                                                         [(ngModel)]="nuevaSolicitudCreditoDTO.empresa"
@@ -175,7 +175,7 @@
                                                 <label>Empresa</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <input  type="text" pInputText name="inputNumeroEmpleado"
                                                         [(ngModel)]="nuevaSolicitudCreditoDTO.numeroEmpleado"
@@ -183,7 +183,7 @@
                                                 <label>Número de empleado</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                             [monthNavigator]="true" [yearNavigator]="true"
@@ -194,8 +194,8 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
                                                    *ngIf="nuevaSolicitudCreditoDTO.salarioMensualBruto">$</p>
@@ -207,7 +207,7 @@
                                                 <label>Salario mensual bruto</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
                                                    *ngIf="nuevaSolicitudCreditoDTO.salarioMensualNeto"  disabled="bloquearGuardado">$</p>
@@ -220,7 +220,7 @@
                                                 <label>Salario mensual neto*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-12 ui-lg-4 datosContacto">
+                                        <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
                                                    *ngIf="montoCreditoSeleccionado"  disabled="bloquearGuardado">$</p>
@@ -239,16 +239,16 @@
                             </div>
                         </div>
                         <br>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-6 p-lg-6">
                                 <fieldset>
                                     <legend>
                                         <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
                                             Red de apoyo - 2 Contactos
                                         </h3>
                                     </legend>
-                                    <div class="ui-g-12 ui-md-12 ui-lg-12 contacto-contenedor" *ngFor="let contactoCredito of nuevaSolicitudCreditoDTO.listaContactoCreditoDTO; let idContacto = index" [attr.data-index]="idContacto">
-                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                    <div class="p-col-12 p-md-12 p-lg-12 contacto-contenedor" *ngFor="let contactoCredito of nuevaSolicitudCreditoDTO.listaContactoCreditoDTO; let idContacto = index" [attr.data-index]="idContacto">
+                                        <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputContactoParentesco{{idContacto}}" type="text" pInputText name="inputContactoParentesco{{idContacto}}"
                                                        #inputContactoParentesco{{idContacto}}="ngModel" required="true"
@@ -256,7 +256,7 @@
                                                 <label>Parentesco*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                        <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputContactoNombre{{idContacto}}" type="text" pInputText name="inputContactoNombre{{idContacto}}"
                                                        #inputContactoNombre{{idContacto}}="ngModel" required="true"
@@ -264,7 +264,7 @@
                                                 <label>Nombre(s)*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                        <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputContactoApellidoPaterno{{idContacto}}" type="text" pInputText name="inputContactoApellidoPaterno{{idContacto}}"
                                                        #inputContactoApellidoPaterno{{idContacto}}="ngModel" required="true"
@@ -272,7 +272,7 @@
                                                 <label>Apellido Paterno*</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                        <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputContactoApellidoMaterno{{idContacto}}" type="text" pInputText name="inputContactoApellidoMaterno{{idContacto}}"
                                                        #inputContactoApellidoMaterno{{idContacto}}="ngModel" required="true"
@@ -280,7 +280,7 @@
                                                 <label>Apellido materno</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                        <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
                                             <span class="md-inputfield">
 <!--                                                <p-inputMask mask="(99)99999999" [(ngModel)]="contactoCredito.telefono"-->
 <!--                                                             required="true" placeholder="" #telefContactoMask="ngModel"-->
@@ -295,7 +295,7 @@
                                                 <span *ngIf="!contactoCredito.telefonoContactoNoValido" style="color: #b00000;">El telefono no es válido.</span>
                                             </span>
                                         </div>
-                                        <div class="ui-g-12 ui-md-6 ui-lg-6 datosContacto">
+                                        <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
                                             <span class="md-inputfield">
                                                 <input id="inputContactoEmail{{idContacto}}" type="email" pInputText name="inputContactoEmail{{idContacto}}"
                                                        required="true" #inputContactoEmail{{idContacto}}="ngModel" (change)="esEmailValido('correoContacto', idContacto)"
@@ -308,14 +308,14 @@
                                     </div>
                                 </fieldset>
                             </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                            <div class="p-col-12 p-md-6 p-lg-6">
                                 <fieldset>
                                     <legend>
                                         <h3 style="margin-bottom: 0px; margin-top: 0px; padding-left: 9px;">
                                             Archivos de solicitud
                                         </h3>
                                     </legend>
-                                    <p-table [value]="nuevaSolicitudCreditoDTO.listaArchivoCreditoDTO" [rows]="10" dataKey="pagoDTO.idPago" selectionMode="single" styleClass="ui-table-cars" [responsive]="true" sortField="idTipoArchivo" sortOrder="1">
+                                    <p-table [value]="nuevaSolicitudCreditoDTO.listaArchivoCreditoDTO" [rows]="10" dataKey="pagoDTO.idPago" selectionMode="single" styleClass="p-table-cars" [responsive]="true" sortField="idTipoArchivo" sortOrder="1">
                                         <ng-template pTemplate="caption">
                                             Listado de archivos de crédito
                                         </ng-template>
@@ -338,16 +338,16 @@
                                                 <td class="center" width="40%">
                                                     <input style="display:none" type="file" id="file{{rowIndex}}" name="file{{rowIndex}}" accept="image/.jpg, image/.png" (change)="onSelectFile($event)" #fileInput>
 
-                                                    <div class="ui-g-12 ui-md-4 ui-lg-4">
-                                                        <button type="button" pButton pRipple icon="ui-icon-search" class="" pTooltip="Seleccionar archivo" (click)="fileInput.click()" id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
+                                                    <div class="p-col-12 p-md-4 p-lg-4">
+                                                        <button type="button" pButton pRipple icon="p-icon-search" class="" pTooltip="Seleccionar archivo" (click)="fileInput.click()" id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
                                                         </button>
                                                     </div>
-                                                    <div class="ui-g-12 ui-md-4 ui-lg-4">
-                                                        <button type="button" pButton pRipple icon="ui-icon-backup" class="" pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)" id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
+                                                    <div class="p-col-12 p-md-4 p-lg-4">
+                                                        <button type="button" pButton pRipple icon="p-icon-backup" class="" pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)" id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
                                                         </button>
                                                     </div>
-                                                    <div class="ui-g-12 ui-md-4 ui-lg-4">
-                                                        <button type="button" pButton pRipple icon="ui-icon-delete" class="" pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)" id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
+                                                    <div class="p-col-12 p-md-4 p-lg-4">
+                                                        <button type="button" pButton pRipple icon="p-icon-delete" class="" pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)" id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                 </td>
@@ -358,15 +358,15 @@
                             </div>
                         </div>
                         <br>
-                        <div class="ui-g" *ngIf="muestraDetalle">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <button pButton type="button" label="Regresar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
+                        <div class="p-grid" *ngIf="muestraDetalle">
+                            <div class="p-col-12 p-md-6 p-lg-4">
+                                <button pButton type="button" label="Regresar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
                             </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <button pButton type="button" label="Guardar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-save" (click)="guardarSolicitudCredito()" [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
+                            <div class="p-col-12 p-md-6 p-lg-4">
+                                <button pButton type="button" label="Guardar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-save" (click)="guardarSolicitudCredito()" [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
                                         || bloquearGuardadoConcluida" *ngIf="!esAnalista">
                                 </button>
-                                <button pButton type="button" label="Cambiar estatus" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-add-circle" (click)="onAbreCambiaEstatus()" [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
+                                <button pButton type="button" label="Cambiar estatus" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-add-circle" (click)="onAbreCambiaEstatus()" [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
                                 </button>
                             </div>
                         </div>
@@ -377,11 +377,11 @@
     </div>
     <p-dialog class="ventanaEmergente" header="Cambiar estatus de solicitud" [(visible)]="displayCambioEstatus" modal="true" *ngIf="puedeMostrarDialogo" [closable]="false" [style]="{width: '30vw'}">
         <form name="formaObservaciones" novalidate #formaObservaciones="ngForm">
-            <div class="ui-g">
-                <div class="ui-g-12 ui-md-12 ui-lg-12" style="padding-top: 0px;">
-                    <div class="ui-g-12 ui-md-12 ui-lg-12" style="padding-top: 0px;">
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-12" style="padding-top: 0px;">
+                    <div class="p-col-12 p-md-12 p-lg-12" style="padding-top: 0px;">
                         <span class="md-inputfield">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                            <div class="p-col-12 p-md-12 p-lg-12">
                                 <span class="md-inputfield">
                                     <p-dropdown [options]="catalogoEstatusCreditoDTO" [(ngModel)]="estatusCreditoSeleccionado"
                                         optionLabel="descripcion" [showClear]="true" placeholder="-" (onChange)="validarDialogCambiaEstatus()"
@@ -390,7 +390,7 @@
                                     <label>Estatus de crédito</label>
                                 </span>
                     </div>
-                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <div class="p-col-12 p-md-12 p-lg-12">
                         <span>
                                     <label for="float-input">Escribe aquí tus comentarios</label>
                                     <textarea cols="30" id="float-input" pInputTextarea rows="5"
@@ -405,12 +405,12 @@
             </div>
             </div>
             <p-footer>
-                <div class="ui-g">
-                    <div class="ui-g-6 ui-md-6 ui-lg-6">
+                <div class="p-grid">
+                    <div class="p-col-6 p-md-6 p-lg-6">
                         <button pButton type="button" icon="pi pi-check" label="Guardar" (click)="onCloseDialogCambiaEstatus('SI')" [disabled]="!formuObservacionValido">
                     </button>
                     </div>
-                    <div class="ui-g-6 ui-md-6 ui-lg-6">
+                    <div class="p-col-6 p-md-6 p-lg-6">
                         <button pButton type="button" icon="pi pi-times" label="Cancelar" (click)="onCloseDialogCambiaEstatus('NO')"></button>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ export class TercerosComponent implements OnInit {
     vacacionesPendientes: number = 0;
     fechaIngreso: Date = new Date();
     fechaEgreso: Date = new Date();
+    yearRange: string = (new Date().getFullYear() - 100) + ':' + (new Date().getFullYear());
 
     constructor(private breadcrumbService: BreadcrumbService, private messageService: MessageService,
                 private confirmationService: ConfirmationService) {
