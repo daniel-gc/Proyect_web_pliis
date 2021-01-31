@@ -1,20 +1,18 @@
 <block-ui>
-    <div class="ui-fluid">
-        <div class="ui-g">
+    <div class="layout-container">
+        <div class="p-grid">
             <p-toast></p-toast>
-            <p-confirmDialog #cd  header="Confirmación de eliminación" icon="ui-icon-warning">
+            <p-confirmDialog #cd header="Confirmación de eliminación" icon="ui-icon-warning">
                 <p-footer>
                     <button type="button" pButton icon="ui-icon-cancel" label="No" (click)="cd.reject()"></button>
                     <button type="button" pButton icon="ui-icon-done" label="Sí" (click)="cd.accept()"></button>
                 </p-footer>
             </p-confirmDialog>
-            <div class="ui-g-12">
+            <div class="p-col-12">
                 <div class="card">
                     <h1>Beneficiarios</h1>
 
-                    <p-table [value]="catalogoMisFamiliares" [paginator]="true" [rows]="10" dataKey="idVinculoFamiliar"
-                             selectionMode="single" [(selection)]="selectedFamiliar" styleClass="ui-table-cars" [columns]="cols"
-                             [responsive]="true">
+                    <p-table [value]="catalogoMisFamiliares" [paginator]="true" [rows]="10" dataKey="idVinculoFamiliar" selectionMode="single" [(selection)]="selectedFamiliar" styleClass="ui-table-cars" [columns]="cols" [responsive]="true">
                         <ng-template pTemplate="caption">
                             Lista de tus familiares
                         </ng-template>

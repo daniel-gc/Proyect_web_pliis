@@ -3,28 +3,26 @@
     <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
 
         <div class="login-body">
-            <div class="card login-panel ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
+            <div class="card login-panel layout-container">
+                <div class="p-grid">
+                    <div class="p-col-12">
                         <img src="assets/layout/images/apple-touch-icon-72x72-precomposed.png">
                     </div>
 
-                    <div class="ui-g-12">
-                        <span class="md-inputfield">
-                        <input type="text" pInputText [(ngModel)]="form.nombreUsuario" name="username"
-                               autocomplete="off" required>
-                        <label>Usuario</label>
-                    </span>
+                    <div class="p-col-12">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="form.nombreUsuario" name="user"> 
+                            <label for="float-input">Username</label>
+                        </span>
                     </div>
-                    <div class="ui-g-12">
+                    <div class="p-col-12">
                         <span class="md-inputfield">
                         <input type="password" pInputText [(ngModel)]="form.password" name="password"
                                autocomplete="off" required/>
                         <label>Contraseña</label>
                     </span>
                     </div>
-                    <div class="ui-g-12" align="left">
-                        <!--                    <div class="card card-w-title">-->
+                    <div class="p-col-12" align="left">
                         <button pButton type="submit" label="Login" style="width: 100%" icon="ui-icon-account-circle" [disabled]="!f.valid"></button>
                         <p-slideMenu #menu [popup]="true" [model]="items" [viewportHeight]="180"></p-slideMenu>
                         <button type="button" pButton icon="ui-icon-person-add" label="Registro" (click)="menu.toggle($event)" style="width: 100%"></button>
