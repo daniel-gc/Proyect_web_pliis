@@ -3,13 +3,13 @@
         <p-toast></p-toast>
         <div class="p-grid">
             <div class="p-col-12">
-                <div class="card no-margin">
+                <div class="card no-margin p-fluid">
                     <h1>Registro de familiares. PLIIS.</h1>
                     <form name="formaRequisitos" *ngIf="!puedeRegistrarse" #formaRequisitos="ngForm">
-                        <div class="p-grid form-group">
+                        <div class="p-grid form-group p-jc-center p-input-filled">
                             <div class="p-col-12 p-md-4 p-lg-4"></div>
                             <div class="p-col-12 p-md-4 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <input id="inputIdAfiliado" type="number" pInputText
                                            [(ngModel)]="idAfiliadoSeleccionado" name="inputIdAfiliado"
                                            required="true"
@@ -20,7 +20,7 @@
                             <div class="p-col-12 p-md-4 p-lg-4"></div>
                         </div>
 
-                        <div class="p-grid">
+                        <div class="p-grid p-jc-center p-input-filled">
                             <div class="p-col-12 p-md-12 p-lg-12">
                                 <button style="width:140px;display: block; margin-left: auto; margin-right: auto;" pButton label="Buscar datos" icon="p-icon-search" (click)="onValidarRequisitos()" [disabled]="!formaRequisitos.valid"></button>
                             </div>
@@ -28,32 +28,32 @@
 
                     </form>
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                        <div class="p-grid form-group" *ngIf="puedeRegistrarse">
-                            <div class="p-col-12 p-md-6 p-lg-4">
-                                <span class="md-inputfield">
+                        <div class="p-grid form-group p-jc-center p-input-filled" *ngIf="puedeRegistrarse">
+                            <div class="p-col-12 p-md-6 p-lg-4 p-mb-3">
+                                <span class="p-float-label">
                                     <input id="inputNombre" type="text" pInputText name="nombreInput"
                                            #nombreInput="ngModel" required="true"
                                            [(ngModel)]="nuevoFamiliar.nombres"/>
                                     <label>Nombre(s)*</label>
                                 </span>
                             </div>
-                            <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                            <div class="p-col-12 p-md-3 p-lg-4 p-mb-3">
+                                <span class="p-float-label">
                                     <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput"
                                            #apPaternoInput="ngModel" required="true"
                                            [(ngModel)]="nuevoFamiliar.apellidoPaterno"/>
                                     <label>Apellido Paterno*</label>
                                 </span>
                             </div>
-                            <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                            <div class="p-col-12 p-md-3 p-lg-4 p-mb-3">
+                                <span class="p-float-label">
                                     <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
                                            [(ngModel)]="nuevoFamiliar.apellidoMaterno"/>
                                     <label>Apellido materno</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-4 p-lg-2">
-                                <span class="md-inputfield">
+                            <div class="p-col-6 p-md-4 p-lg-2 p-mb-3">
+                                <span class="p-float-label">
                                     <p-calendar showButtonBar="true" dateFormat="yy-mm-dd" [locale]="es"
                                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019"
                                                 name="fechaNac"
@@ -62,23 +62,23 @@
                                     <label>Fecha de nacimiento*</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-4 p-lg-2">
-                                <span class="md-inputfield">
+                            <div class="p-col-6 p-md-4 p-lg-2 p-mb-3">
+                                <span class="p-float-label">
                                     <p-dropdown [options]="sexos" [(ngModel)]="sexoSeleccionado" optionLabel="nombre"
                                                 name="sexoDropDown"></p-dropdown>
                                     <label>Sexo*</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-4 p-lg-2">
-                                <span class="md-inputfield">
+                            <div class="p-col-6 p-md-4 p-lg-2 p-mb-3">
+                                <span class="p-float-label">
                                     <p-inputMask mask="(99)99999999" [(ngModel)]="nuevoFamiliar.telefono"
                                                  #telefMask="ngModel"
                                                  required="true" size="30" name="telefMask"></p-inputMask>
                                     <label>Teléfono*</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-6 p-lg-6">
-                                <span class="md-inputfield">
+                            <div class="p-col-6 p-md-6 p-lg-6 p-mb-3">
+                                <span class="p-float-label">
                                     <input id="inputEmail" type="email" pInputText name="inputEmail"
                                            [(ngModel)]="nuevoFamiliar.email"
                                            required="true" #inputEmail="ngModel"/>
@@ -86,15 +86,15 @@
                                 </span>
                             </div>
 
-                            <div class="p-col-6 p-md-4 p-lg-4">
-                                <span class="md-inputfield">
+                            <div class="p-col-6 p-md-4 p-lg-4 p-mb-3">
+                                <span class="p-float-label">
                                     <p-dropdown [options]="catalogoRelacionesFamiliares" [(ngModel)]="relacionFamiliarSeleccionada"
                                                 name="relacionesFamiliaresDropDown" optionLabel="nombre"></p-dropdown>
                                     <label>Relación familiar*</label>
                                 </span>
                             </div>
-                            <div class="p-col-12 p-md-4 p-lg-4">
-                                <span class="md-inputfield">
+                            <div class="p-col-12 p-md-4 p-lg-4 p-mb-3">
+                                <span class="p-float-label">
                                     <input type="password" pPassword [(ngModel)]="pass0" feedback="false"
                                            weakLabel="Débil" required="true"
                                            strongLabel="Fuerte" #pass00="ngModel"
@@ -107,8 +107,8 @@
                                 </span>
 
                             </div>
-                            <div class="p-col-12 p-md-4 p-lg-4">
-                                <span class="md-inputfield">
+                            <div class="p-col-12 p-md-4 p-lg-4 p-mb-3">
+                                <span class="p-float-label">
                                     <input type="password" pPassword [(ngModel)]="pass1" feedback="false"
                                            weakLabel="Débil" required="true"
                                            strongLabel="Fuerte" #pass01="ngModel"
@@ -158,9 +158,9 @@
             <h4>Introduzca por favor la fecha de nacimiento del afiliado encontrado.</h4>
             <div class="p-col-12 p-md-3 p-lg-3"></div>
             <div class="p-col-12 p-md-6 p-lg-6">
-                <span class="md-inputfield">
+                <span class="p-float-label">
                         <p-calendar showButtonBar="true" dateFormat="yy-mm-dd" [locale]="es"
-                                    [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019"
+                                    [monthNavigator]="true" [yearNavigator]="true" [yearRange]="yearRange"
                                     name="fechaNacPregunta" [inline]="false"
                                     [(ngModel)]="fechaNacPregunta"  appendTo="body"
                                     required="true">

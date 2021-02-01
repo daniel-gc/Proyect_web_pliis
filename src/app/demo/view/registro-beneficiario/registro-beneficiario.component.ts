@@ -48,6 +48,7 @@ export class RegistroBeneficiarioComponent implements OnInit {
     msgs: Message[];
     uploadedFiles: any[] = [];
     es: any;
+    yearRange: string = (new Date().getFullYear() - 100) + ':' + (new Date().getFullYear());
 
     idAfiliadoSeleccionado: number;
     displayDatos = false;

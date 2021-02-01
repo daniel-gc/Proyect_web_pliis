@@ -3,30 +3,30 @@
     <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
 
         <div class="login-body">
-            <div class="card login-panel layout-container">
-                <div class="p-grid">
-                    <div class="p-col-12">
+            <div class="card p-fluid login-panel layout-container">
+                <div class="p-grid p-jc-center p-input-filled">
+                    <div class="p-col-10">
                         <img src="assets/layout/images/apple-touch-icon-72x72-precomposed.png">
                     </div>
 
-                    <div class="p-col-12">
+                    <div class="p-col-10">
                         <span class="p-float-label">
-                            <input id="float-input" type="text" pInputText [(ngModel)]="form.nombreUsuario" name="user"> 
+                            <input id="float-input" type="text" pInputText [(ngModel)]="form.nombreUsuario" name="username"> 
                             <label for="float-input">Username</label>
                         </span>
                     </div>
-                    <div class="p-col-12">
-                        <span class="md-inputfield">
+                    <div class="p-col-10 p-mb-5">
+                        <span class="p-float-label">
                         <input type="password" pInputText [(ngModel)]="form.password" name="password"
                                autocomplete="off" required/>
                         <label>Contraseña</label>
                     </span>
                     </div>
-                    <div class="p-col-12" align="left">
-                        <button pButton type="submit" label="Login" style="width: 100%" icon="ui-icon-account-circle" [disabled]="!f.valid"></button>
+                    <div class="p-col-10" align="left">
+                        <button pButton class="p-mb-3" type="submit" label="Login" style="width: 100%" icon="ui-icon-account-circle" [disabled]="!f.valid"></button>
                         <p-slideMenu #menu [popup]="true" [model]="items" [viewportHeight]="180"></p-slideMenu>
-                        <button type="button" pButton icon="ui-icon-person-add" label="Registro" (click)="menu.toggle($event)" style="width: 100%"></button>
-                        <button pButton type="button" label="Olvidé mi contraseña" style="width: 100%" class="pink-btn" icon="ui-icon-help" [routerLink]="'/olvidePassw'"></button>
+                        <button type="button" class="p-mb-3" pButton icon="ui-icon-person-add" label="Registro" (click)="menu.toggle($event)" style="width: 100%"></button>
+                        <button pButton class="p-mb-3" type="button" label="Olvidé mi contraseña" style="width: 100%" class="pink-btn" icon="ui-icon-help" [routerLink]="'/olvidePassw'"></button>
                         <a href="https://pliis.mx/" target="_blank" style="alignment: right">Página de bienvenida</a>
 
                     </div>
