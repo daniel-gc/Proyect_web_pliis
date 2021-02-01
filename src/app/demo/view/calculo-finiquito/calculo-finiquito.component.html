@@ -1,15 +1,15 @@
 <block-ui>
     <div class="layout-container">
         <p-toast></p-toast>
-        <div class="p-grid">
+        <div class="p-grid p-fluid">
             <div class="p-col-12">
                 <div class="card no-margin">
                     <h1>Calculo Finiquito</h1>
                     <form name="formaCalculo" #formaCalculo="ngForm">
-                        <div class="p-grid form-group">
-                            <div class="p-col-12 p-md-6 p-lg-6 p-xl-12">
+                        <div class="p-grid p-input-filled form-group">
+                            <div class="p-col-12 p-md-6 p-lg-6">
                                 <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
-                                    <span class="md-inputfield span_input">
+                                    <span class="md-inputfield">
                                         <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                     [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2020" name="fechaIngreso"
                                                     [(ngModel)]="finiquitoCalculoDTO.fechaIngreso" #fechaIngreso="ngModel" required="true"></p-calendar>
@@ -17,43 +17,43 @@
                                     </span>
                                 </div>
                                 <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
-                                    <span class="md-inputfield span_input">
+                                    <span class="md-inputfield">
                                         <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                     [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2020" name="fechaEgreso"
                                                     [(ngModel)]="finiquitoCalculoDTO.fechaEgreso" #fechaEgreso="ngModel" required="true"></p-calendar>
                                         <label>Fecha de egreso*</label>
                                     </span>
                                 </div>
-                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
-                                    <span class="md-inputfield span_input">
-                                        <p-spinner size="10" [step]="1" name="salarioMensualActual" required="true"
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8 p-mt-3">
+                                    <span class="md-inputfield">
+                                        <p-spinner size="39" [step]="1" name="salarioMensualActual" required="true"
                                                    [(ngModel)]="finiquitoCalculoDTO.salarioMensualActual"></p-spinner>
                                         <label>Salario mensual</label>
                                     </span>
                                 </div>
-                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
-                                    <span class="md-inputfield span_input">
-                                        <p-spinner size="2" [step]="1" name="diasAguinaldo" required="true"
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8 p-mt-3">
+                                    <span class="md-inputfield">
+                                        <p-spinner size="39" [step]="1" name="diasAguinaldo" required="true"
                                                    [(ngModel)]="finiquitoCalculoDTO.diasAguinaldo"></p-spinner>
                                         <label>Días de aguinaldo</label>
                                     </span>
                                 </div>
-                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
-                                    <span class="md-inputfield span_input">
-                                        <p-spinner size="2" [step]="1" name="diasVacacionesAnio" required="true"
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8 p-mt-3">
+                                    <span class="md-inputfield">
+                                        <p-spinner size="39" [step]="1" name="diasVacacionesAnio" required="true"
                                                    [(ngModel)]="finiquitoCalculoDTO.diasVacacionesAnio"></p-spinner>
                                         <label>Días de vacaciones al año</label>
                                     </span>
                                 </div>
-                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8">
-                                    <span class="md-inputfield span_input">
-                                        <p-spinner size="2" [step]="1" name="diasVacacionesPendientes" required="true"
+                                <div class="p-col-12 p-md-12 p-lg-offset-2 p-lg-8 p-mt-3">
+                                    <span class="md-inputfield">
+                                        <p-spinner size="39" [step]="1" name="diasVacacionesPendientes" required="true"
                                                   [(ngModel)]="finiquitoCalculoDTO.diasVacacionesPendientes"></p-spinner>
                                         <label>Días de vacaciones pendientes</label>
                                     </span>
                                 </div>
-                                <div class="p-col-12 p-md-12 p-lg-12">
-                                    <button pButton label="Calcular" icon="p-icon-search" style="width:140px;display: block; margin-left: auto; margin-right: auto;" (click)="onCalcularFiniquito()" [disabled]="!formaCalculo.valid">
+                                <div class="p-lg-offset-4 p-col-12 p-md-4 p-lg-4 p-mt-3">
+                                    <button pButton label="Calcular" icon="ui-icon-search" (click)="onCalcularFiniquito()" [disabled]="!formaCalculo.valid">
                                     </button>
                                 </div>
                             </div>

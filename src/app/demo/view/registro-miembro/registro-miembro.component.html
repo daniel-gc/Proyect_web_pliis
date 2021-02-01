@@ -34,7 +34,7 @@
 
                     <!--                    </form>-->
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                        <div class="p-grid form-group">
+                        <div class="p-grid p-fluid form-group p-input-filled">
                             <div class="p-col-12 p-md-6 p-lg-4">
                                 <span class="md-inputfield">
                                     <input id="inputNombre" type="text" pInputText name="nombreInput" #nombreInput="ngModel" required="true"
@@ -191,7 +191,7 @@
                                     <label>Puesto de trabajo</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-6 p-lg-2">
+                            <div class="p-sm-6 p-md-6 p-col-3 p-lg-3">
                                 <span class="md-inputfield">
                                     <p-calendar showButtonBar="true" dateFormat="yy-mm-dd" [locale]="es" required="true" #fechaIngreso="ngModel"
                                                 [(ngModel)]="fechaAntiguedad"
@@ -199,14 +199,14 @@
                                     <label>Fecha de ingreso a empresa*</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-6 p-lg-2">
+                            <div class="p-sm-6 p-md-3 p-col-3 p-lg-3">
                                 <span class="md-inputfield">
                                     <p-spinner size="30" [step]="0.10" name="inputSalarioNeto" required="true" #inputSalarioNeto="ngModel"
                                                [(ngModel)]="nuevoMiembroArquitecturaDTO.salarioMensualNeto"></p-spinner>
                                     <label>Salario mensual neto*</label>
                                 </span>
                             </div>
-                            <div class="p-col-6 p-md-6 p-lg-2">
+                            <div class="p-sm-6 p-md-3 p-col-3 p-lg-3">
                                 <span class="md-inputfield">
                                     <p-spinner size="30" [step]="0.10" name="inputSalarioBruto" [(ngModel)]="nuevoMiembroArquitecturaDTO.salarioMensualBruto"></p-spinner>
                                     <label>Salario mensual bruto</label>
@@ -218,7 +218,7 @@
                             <!--                                    <label>Nick de usuario</label>-->
                             <!--                                </span>-->
                             <!--                            </div>-->
-                            <div class="p-col-12 p-md-6 p-lg-4">
+                            <div class="p-sm-12 p-md-3 p-col-3 p-lg-3">
                                 <span class="md-inputfield">
                                     <input  type="text" pInputText name="nombreSindicatoInput" title="Si está afiliado a otro sindicato, escriba su nombre"
                                         [(ngModel)]="nuevoMiembroArquitecturaDTO.sindicato" />
@@ -330,7 +330,7 @@
     <h4>Hemos encontrado este afiliado registrado.</h4>
     Nombre: {{empleadoSeleccionado.nombre}}<br>
     <form name="fechaNacPtaForm">
-        <div class="p-grid">
+        <div class="p-grid p-fluid">
             <h4>Introduzca por favor la fecha de nacimiento del afiliado encontrado.</h4>
             <div class="p-col-12 p-md-3 p-lg-3"></div>
             <div class="p-col-12 p-md-6 p-lg-6">

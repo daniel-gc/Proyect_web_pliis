@@ -1,7 +1,7 @@
 <block-ui>
     <div class="layout-container">
         <!--    <p-messages [value]="msgs"></p-messages>-->
-        <div class="p-grid">
+        <div class="p-grid p-fluid">
             <div class="p-col-12">
                 <p-toast [style]="{marginTop: '80px'}"></p-toast>
                 <div class="card">
@@ -65,7 +65,7 @@
                         formulario, sabiendo de antemano que los datos proporcionados será totalmente anónimos.<br>
                     </p>
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                        <div class="p-grid form-group">
+                        <div class="p-grid p-fluid p-input-filled form-group">
                             <div class="p-col-12 p-md-12 p-lg-12">
                                 <p-checkbox name="aceptoTerminos" binary="true" [(ngModel)]="aceptoTerminos" label="He leído la información proporcionada y conozco las implicaciones de la denuncia que realizaré"></p-checkbox>
                             </div>
@@ -91,35 +91,33 @@
                             </div>
 
                             <div class="p-col-12 p-md-6 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                 <p-dropdown [options]="listaEmpresas" [(ngModel)]="empresaSeleccionada" optionLabel="nombre"
                                              name="empresasDropDown" required="true" (onChange)="onChangeEmpresas($event)"></p-dropdown>
                                 <label> Seleccione su empresa</label>
                             </span>
                             </div>
                             <div class="p-col-12 p-md-6 p-lg-4">
-                                <span class="md-inputfield" *ngIf="empresaSeleccionada">
+                                <span class="p-float-label" *ngIf="empresaSeleccionada">
                             <p-dropdown [options]="empresaSeleccionada.centrosTrabajo" [(ngModel)]="centroTrabajoSeleccionado" optionLabel="nombre"
                                         name="centroTrabajoDropDown" required="true" filter="true" filterBy="value.nombre"></p-dropdown>
                             <label> Seleccione su centro de trabajo</label>
                         </span>
                             </div>
                             <!--                        <div class="p-col-12 p-md-6 p-lg-4">-->
-                            <!--                            <span class="md-inputfield">-->
+                            <!--                            <span class="p-float-label">-->
                             <!--                                <input  type="text" pInputText/>-->
                             <!--                                <label>Departamento, área de trabajo etc.</label>-->
                             <!--                            </span>-->
                             <!--                        </div>-->
                             <div class="p-col-12 p-md-6 p-lg-4">
-                                <span class="md-inputfield">
-                                <input type="text" pInputText name="NombreDeunciado" [(ngModel)]="panicoDTO.nombreDenunciado" />
-                                <label>Nombre(s) y apellidos del denunciado</label>
-                            </span>
+                                <span class="p-float-label">
+                                    <input type="text" pInputText name="NombreDeunciado" [(ngModel)]="panicoDTO.nombreDenunciado" />
+                                    <label>Nombre(s) y apellidos del denunciado</label>
+                                </span>
                             </div>
-                            <div class="p-grid">
-                                <div class="p-col-12 p-md-12 p-lg-12">
-                                    <button pButton type="button" label="Enviar" style="width:140px;display: block; margin-left: auto; margin-right: auto;" icon="p-icon-send" (click)="confirm1()" [disabled]="!formaRegistro.valid || selectedCausas.length === 0 || !aceptoTerminos"></button>
-                                </div>
+                            <div class="p-col-12 p-md-2 p-lg-2">
+                                <button pButton type="button" label="Enviar" icon="ui-icon-send" (click)="confirm1()" [disabled]="!formaRegistro.valid || selectedCausas.length === 0 || !aceptoTerminos"></button>
                             </div>
 
                         </div>
@@ -133,7 +131,7 @@
             </div>
         </div>
 
-        <p-confirmDialog #cd header="Confirmación de denuncia" icon="pi pi-exclamation-triangle">
+        <p-confirmDialog #cd header="Confirmación de denuncia" icon="ui ui-exclamation-triangle">
             <p-footer>
                 <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
                 <button type="button" pButton icon="pi pi-check" label="Sí" (click)="cd.accept()"></button>

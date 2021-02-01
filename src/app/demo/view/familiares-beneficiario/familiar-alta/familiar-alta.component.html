@@ -1,36 +1,36 @@
 <block-ui>
     <div class="layout-container">
         <p-toast></p-toast>
-        <div class="p-grid">
+        <div class="p-grid p-fluid">
             <div class="p-col-12">
                 <div class="card no-margin">
                     <h1>Registro de familiares.</h1>
 
                     <form name="formaRegistro" novalidate #formaRegistro="ngForm">
-                        <div class="p-grid form-group">
+                        <div class="p-grid form-group p-input-filled">
                             <div class="p-col-12 p-md-6 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <input id="inputNombre" type="text" pInputText name="nombreInput" #nombreInput="ngModel" required="true"
                                            [(ngModel)]="nuevoMiembroArquitecturaDTO.nombres"/>
                                     <label>Nombre(s)*</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput" #apPaternoInput="ngModel" required="true"
                                         [(ngModel)]="nuevoMiembroArquitecturaDTO.apPaterno"/>
                                     <label>Apellido Paterno*</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
                                         [(ngModel)]="nuevoMiembroArquitecturaDTO.apMaterno"/>
                                     <label>Apellido materno</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
                                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="1917:2019" name="fechaNac"
                                                 [(ngModel)]="fhNacimiento" #fechaNac="ngModel" required="true"></p-calendar>
@@ -38,35 +38,35 @@
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <p-dropdown [options]="sexos" [(ngModel)]="sexoSeleccionado" optionLabel="nombre"
                                                 name="sexoDropDown"></p-dropdown>
                                     <label>Sexo*</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <p-dropdown [options]="catParentesco" [(ngModel)]="parentescoSeleccionado" optionLabel="nombre"
                                                 name="sexoDropDown"></p-dropdown>
                                     <label>Parentesco*</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <p-inputMask mask="(99)99999999" [(ngModel)]="nuevoMiembroArquitecturaDTO.telefono" placeholder="" #telefMask="ngModel"
                                                  required="false" size="30" name="telefMask" ></p-inputMask>
                                     <label>Teléfono</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <input id="inputEmail" type="email" pInputText name="inputEmail" [(ngModel)]="nuevoMiembroArquitecturaDTO.email"
                                     email="true"  required="false" #inputEmail="ngModel" />
                                     <label>Email</label>
                                 </span>
                             </div>
                             <div class="p-col-12 p-md-3 p-lg-4">
-                                <span class="md-inputfield">
+                                <span class="p-float-label">
                                     <input  type="text" pInputText name="inputCurp" required="false" #inputCurp="ngModel" [(ngModel)]="nuevoMiembroArquitecturaDTO.curp"/>
                                     <label>CURP</label>
                                 </span>

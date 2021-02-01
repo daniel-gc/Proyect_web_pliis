@@ -1,7 +1,7 @@
 <block-ui>
     <div class="layout-container">
         <p-toast></p-toast>
-        <div class="p-grid">
+        <div class="p-grid p-fluid">
             <div class="p-col-12">
                 <div class="card">
                     <div class="fullscreen" *ngIf="displayVistaPrevia">
@@ -94,7 +94,7 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <div class="p-grid form-group">
+                        <div class="p-grid p-input-filled form-group">
                             <div class="p-col-12 p-md-12 p-lg-12" disabled="true">
                                 <fieldset>
                                     <legend>
@@ -102,9 +102,9 @@
                                             Datos generales del solicitante
                                         </h3>
                                     </legend>
-                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                    <div class="p-grid">
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputNombre" type="text" pInputText name="nombreInput" #nombreInput="ngModel" required="true"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.nombre"
                                                        [disabled]="bloquearGuardado"/>
@@ -112,7 +112,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputApellidoPaterno" type="text" pInputText name="apPaternoInput" #apPaternoInput="ngModel" required="true"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.apellidoPaterno"
                                                        [disabled]="bloquearGuardado"/>
@@ -120,7 +120,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputApellidoMaterno" type="text" pInputText name="inputApellidoMaterno"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.apellidoMaterno"
                                                        [disabled]="bloquearGuardado"/>
@@ -128,7 +128,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                    <div class="p-grid">
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p-calendar showButtonBar="true" [locale]="es" dateFormat="yy-mm-dd"
@@ -140,7 +140,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
     <!--                                            <p-inputMask mask="(99)99999999" [(ngModel)]="nuevaSolicitudCreditoDTO.telefono"-->
     <!--                                                         pInputText="{{nuevaSolicitudCreditoDTO.telefono}}" #telefMask="ngModel"-->
     <!--                                                         required="true" size="30" name="telefMask" ></p-inputMask>-->
@@ -156,7 +156,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputEmail" type="email" pInputText name="inputEmail"
                                                        [(ngModel)]="nuevaSolicitudCreditoDTO.email" (change)="esEmailValido('correoAfil', 0)"
                                                        required="true" #inputEmail="ngModel" [disabled]="bloquearGuardado"
@@ -166,9 +166,9 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                    <div class="p-grid">
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input  type="text" pInputText name="inputEmpresa"
                                                         [(ngModel)]="nuevaSolicitudCreditoDTO.empresa"
                                                         [disabled]="bloquearGuardado"/>
@@ -176,7 +176,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input  type="text" pInputText name="inputNumeroEmpleado"
                                                         [(ngModel)]="nuevaSolicitudCreditoDTO.numeroEmpleado"
                                                         [disabled]="bloquearGuardado"/>
@@ -194,7 +194,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="p-col-12 p-md-12 p-lg-12">
+                                    <div class="p-grid">
                                         <div class="p-col-12 p-md-12 p-lg-4 datosContacto">
                                             <span class="md-inputfield">
                                                 <p style="display: inline-block; width: 7%; margin-top: 0px; margin-bottom: 0px; text-align: right;"
@@ -247,9 +247,9 @@
                                             Red de apoyo - 2 Contactos
                                         </h3>
                                     </legend>
-                                    <div class="p-col-12 p-md-12 p-lg-12 contacto-contenedor" *ngFor="let contactoCredito of nuevaSolicitudCreditoDTO.listaContactoCreditoDTO; let idContacto = index" [attr.data-index]="idContacto">
+                                    <div class="p-grid contacto-contenedor p-input-filled" *ngFor="let contactoCredito of nuevaSolicitudCreditoDTO.listaContactoCreditoDTO; let idContacto = index" [attr.data-index]="idContacto">
                                         <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputContactoParentesco{{idContacto}}" type="text" pInputText name="inputContactoParentesco{{idContacto}}"
                                                        #inputContactoParentesco{{idContacto}}="ngModel" required="true"
                                                        [(ngModel)]="contactoCredito.parentesco" [disabled]="bloquearGuardado"/>
@@ -257,7 +257,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputContactoNombre{{idContacto}}" type="text" pInputText name="inputContactoNombre{{idContacto}}"
                                                        #inputContactoNombre{{idContacto}}="ngModel" required="true"
                                                        [(ngModel)]="contactoCredito.nombre" [disabled]="bloquearGuardado"/>
@@ -265,7 +265,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputContactoApellidoPaterno{{idContacto}}" type="text" pInputText name="inputContactoApellidoPaterno{{idContacto}}"
                                                        #inputContactoApellidoPaterno{{idContacto}}="ngModel" required="true"
                                                        [(ngModel)]="contactoCredito.apellidoPaterno" [disabled]="bloquearGuardado"/>
@@ -273,7 +273,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputContactoApellidoMaterno{{idContacto}}" type="text" pInputText name="inputContactoApellidoMaterno{{idContacto}}"
                                                        #inputContactoApellidoMaterno{{idContacto}}="ngModel" required="true"
                                                        [(ngModel)]="contactoCredito.apellidoMaterno" [disabled]="bloquearGuardado"/>
@@ -281,7 +281,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
 <!--                                                <p-inputMask mask="(99)99999999" [(ngModel)]="contactoCredito.telefono"-->
 <!--                                                             required="true" placeholder="" #telefContactoMask="ngModel"-->
 <!--                                                             size="30" name="telefContactoMask" ></p-inputMask>-->
@@ -296,7 +296,7 @@
                                             </span>
                                         </div>
                                         <div class="p-col-12 p-md-6 p-lg-6 datosContacto">
-                                            <span class="md-inputfield">
+                                            <span class="p-float-label">
                                                 <input id="inputContactoEmail{{idContacto}}" type="email" pInputText name="inputContactoEmail{{idContacto}}"
                                                        required="true" #inputContactoEmail{{idContacto}}="ngModel" (change)="esEmailValido('correoContacto', idContacto)"
                                                        [(ngModel)]="contactoCredito.email" [disabled]="bloquearGuardado"
