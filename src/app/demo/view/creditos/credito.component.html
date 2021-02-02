@@ -70,10 +70,9 @@
                             </tr>
                         </ng-template>
                     </p-table>
-                    <div class="p-grid">
-                        <div class="p-col-12 p-md-12 p-lg-12" *ngIf="mostrarLista">
-                            <button pButton type="button" label="Nueva solicitud" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)" [pTooltip]="tooltipBtnNueva" [disabled]="existeSolicitudCreditoPendiente"
-                                *ngIf="!esAnalista"></button>
+                    <div class="p-grid p-jc-center p-mt-2">
+                        <div class="p-col-3" *ngIf="mostrarLista">
+                            <button pButton type="button" label="Nueva solicitud" icon="ui-icon-add-circle" (click)="onMuestraFormDetalle('nueva', null)" [pTooltip]="tooltipBtnNueva" [disabled]="existeSolicitudCreditoPendiente" *ngIf="!esAnalista"></button>
                         </div>
                     </div>
                     <h1 *ngIf="muestraDetalle">El SNAC te hace el paro</h1>
@@ -339,15 +338,15 @@
                                                     <input style="display:none" type="file" id="file{{rowIndex}}" name="file{{rowIndex}}" accept="image/.jpg, image/.png" (change)="onSelectFile($event)" #fileInput>
 
                                                     <div class="p-col-12 p-md-4 p-lg-4">
-                                                        <button type="button" pButton pRipple icon="p-icon-search" class="" pTooltip="Seleccionar archivo" (click)="fileInput.click()" id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
+                                                        <button type="button" pButton pRipple icon="ui-icon-search" class="" pTooltip="Seleccionar archivo" (click)="fileInput.click()" id="selArchivo{{rowIndex}}" [disabled]="rowData.botonDisabled1 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                     <div class="p-col-12 p-md-4 p-lg-4">
-                                                        <button type="button" pButton pRipple icon="p-icon-backup" class="" pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)" id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
+                                                        <button type="button" pButton pRipple icon="ui-icon-backup" class="" pTooltip="Cargar archivo seleccionado" (click)="onUpload(rowIndex)" id="upload{{rowIndex}}" [disabled]="rowData.botonDisabled2 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                     <div class="p-col-12 p-md-4 p-lg-4">
-                                                        <button type="button" pButton pRipple icon="p-icon-delete" class="" pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)" id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
+                                                        <button type="button" pButton pRipple icon="ui-icon-delete" class="" pTooltip="Eliminar archivo cargado" (click)="onRemoveFile(rowIndex)" id="delete{{rowIndex}}" [disabled]="rowData.botonDisabled3 || bloquearGuardado">
                                                         </button>
                                                     </div>
                                                 </td>
@@ -360,13 +359,13 @@
                         <br>
                         <div class="p-grid" *ngIf="muestraDetalle">
                             <div class="p-col-12 p-md-6 p-lg-4">
-                                <button pButton type="button" label="Regresar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
+                                <button pButton type="button" label="Regresar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-keyboard-return" (click)="onRegresarAListado('')"></button>
                             </div>
                             <div class="p-col-12 p-md-6 p-lg-4">
-                                <button pButton type="button" label="Guardar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-save" (click)="guardarSolicitudCredito()" [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
+                                <button pButton type="button" label="Guardar" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-save" (click)="guardarSolicitudCredito()" [disabled]="(!formaRegistro.valid && archivosCargados && mailValidoForm)
                                         || bloquearGuardadoConcluida" *ngIf="!esAnalista">
                                 </button>
-                                <button pButton type="button" label="Cambiar estatus" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="p-icon-add-circle" (click)="onAbreCambiaEstatus()" [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
+                                <button pButton type="button" label="Cambiar estatus" style="width:140px; display: block; margin-left: auto; margin-right: auto;" icon="ui-icon-add-circle" (click)="onAbreCambiaEstatus()" [disabled]="bloquearGuardadoConcluida" *ngIf="esAnalista">
                                 </button>
                             </div>
                         </div>

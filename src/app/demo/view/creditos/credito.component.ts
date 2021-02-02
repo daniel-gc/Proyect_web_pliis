@@ -108,7 +108,7 @@ export class CreditoComponent implements OnInit {
 
     llenadoVariables() {
         this.blockUI.start('Cargando...');
-        this.arregloIdArchivo = [1, 1, 1, 2, 4];
+        this.arregloIdArchivo = [1, 1, 1, 1, 2, 3, 4, 5];
         if (this.tokenService.getAuthorities().indexOf('ROLE_AFILIADO') !== -1) {
             this.tipoUsuario = 'AS';
         } else if (this.tokenService.getAuthorities().indexOf('ROLE_MIEMBRO_ACTIVO') !== -1) {
