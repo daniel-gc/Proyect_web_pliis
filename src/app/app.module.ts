@@ -103,11 +103,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SegurosComponent } from './demo/view/seguros/seguros.component';
 import { ServFunerariosComponent } from './demo/view/serv-funerarios/serv-funerarios.component';
 import { AcademiaComponent } from './demo/view/academia/academia.component';
-import { LlamadasComponent } from './demo/view/beneficios/llamadas/llamadas.component';
-import { AsistenciaVisualComponent } from './demo/view/beneficios/asistencia-visual/asistencia-visual.component';
-import { CuidadosEnfermeriaComponent } from './demo/view/beneficios/cuidados-enfermeria/cuidados-enfermeria.component';
-import { VeterinarioComponent } from './demo/view/beneficios/veterinario/veterinario.component';
-import { MobileViajesComponent } from './demo/view/beneficios/mobile-viajes/mobile-viajes.component';
+import { BeneficiosComponent } from './demo/view/beneficios/beneficios.component';
 import { MedicoTelefonicoComponent } from './demo/view/asistencias/medico-telefonico/medico-telefonico.component';
 import { NutricionistaComponent } from './demo/view/asistencias/nutricionista/nutricionista.component';
 import { PsicologoComponent } from './demo/view/asistencias/psicologo/psicologo.component';
@@ -239,11 +235,7 @@ import {FamiliarConsultaComponent} from './demo/view/familiares-beneficiario/fam
         SegurosComponent,
         ServFunerariosComponent,
         AcademiaComponent,
-        LlamadasComponent,
-        AsistenciaVisualComponent,
-        CuidadosEnfermeriaComponent,
-        VeterinarioComponent,
-        MobileViajesComponent,
+        BeneficiosComponent,
         MedicoTelefonicoComponent,
         NutricionistaComponent,
         PsicologoComponent,

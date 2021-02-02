@@ -12,11 +12,7 @@ import {EstadisticasComponent} from './demo/view/estadisticas/estadisticas.compo
 import {AcademiaComponent} from './demo/view/academia/academia.component';
 import {SegurosComponent} from './demo/view/seguros/seguros.component';
 import {ServFunerariosComponent} from './demo/view/serv-funerarios/serv-funerarios.component';
-import {LlamadasComponent} from './demo/view/beneficios/llamadas/llamadas.component';
-import {AsistenciaVisualComponent} from './demo/view/beneficios/asistencia-visual/asistencia-visual.component';
-import {CuidadosEnfermeriaComponent} from './demo/view/beneficios/cuidados-enfermeria/cuidados-enfermeria.component';
-import {VeterinarioComponent} from './demo/view/beneficios/veterinario/veterinario.component';
-import {MobileViajesComponent} from './demo/view/beneficios/mobile-viajes/mobile-viajes.component';
+import {BeneficiosComponent} from './demo/view/beneficios/beneficios.component';
 import {MedicoTelefonicoComponent} from './demo/view/asistencias/medico-telefonico/medico-telefonico.component';
 import {NutricionistaComponent} from './demo/view/asistencias/nutricionista/nutricionista.component';
 import {PsicologoComponent} from './demo/view/asistencias/psicologo/psicologo.component';
@@ -68,16 +64,8 @@ export const routes: Routes = [
                 canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ROLE_FAMILIAR', 'ROLE_DELEGADO', 'ROLE_MIEMBRO_ACTIVO']}, },
             {path: 'beneficios/serviciosFunerarios', component: ServFunerariosComponent,
                 canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ROLE_FAMILIAR', 'ROLE_DELEGADO', 'ROLE_MIEMBRO_ACTIVO']}, },
-            {path: 'beneficios/llamadasIlimitadas', component: LlamadasComponent,
+            {path: 'beneficios', component: BeneficiosComponent,
                 canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ROLE_FAMILIAR', 'ROLE_DELEGADO', 'ROLE_MIEMBRO_ACTIVO']}},
-            {path: 'beneficios/asistenciaVisual', component: AsistenciaVisualComponent,
-                canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ROLE_FAMILIAR', 'ANY']}},
-            {path: 'beneficios/cuidadosEnfermeria', component: CuidadosEnfermeriaComponent,
-                canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ROLE_FAMILIAR', 'ANY']}},
-            {path: 'beneficios/redVeterinaria', component: VeterinarioComponent,
-                canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ANY']}},
-            {path: 'beneficios/mobileViajes', component: MobileViajesComponent,
-                canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ANY']}},
             {path: 'asistencia/medicoTelefonico', component: MedicoTelefonicoComponent,
                 canActivate: [guard], data: { rolesAutorizados: ['ROLE_ADMINISTRADOR', 'ROLE_AFILIADO', 'ANY']}},
             {path: 'asistencia/nutricionistaTelefonico', component: NutricionistaComponent,
